@@ -1,0 +1,111 @@
+﻿<u:WidgetBase
+    x:Class="Hjmos.Lcdp.Plugins.NccControl.Views.EmergencyCommandMenuView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:Hjmos.Lcdp.Plugins.NccControl.Converters"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:u="clr-namespace:Hjmos.Lcdp.VisualEditor.Core.BaseClass;assembly=Hjmos.Lcdp.VisualEditor.Core"
+    Width="{Binding Width, Mode=TwoWay}"
+    Height="{Binding Height, Mode=TwoWay}"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <!--  应急指挥主窗口导航栏  -->
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Hjmos.Lcdp.Plugins.NccControl;component/Styles/FontIcon.xaml" />
+                <ResourceDictionary Source="/Hjmos.Lcdp.Plugins.NccControl;component/Styles/ScrollViewer.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <!--  转换器  -->
+            <converters:EmergencyCommandMenuCursorConverter x:Key="EmergencyCommandMenuCursorConverter" />
+            <converters:SelectedEmergencyCommandMenuConverter x:Key="SelectedEmergencyCommandMenuConverter" />
+            <converters:EmergencyCommandMenuForegroundEnableConverter x:Key="EmergencyCommandMenuForegroundEnableConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <ItemsControl ItemsSource="{Binding MainMenus}">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Horizontal" />
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <Border
+                    Width="84"
+                    Height="72"
+                    Margin="-1"
+                    Background="#124469"
+                    BorderBrush="Transparent"
+                    BorderThickness="1"
+                    Cursor="{Binding IsEnabled, Converter={StaticResource EmergencyCommandMenuCursorConverter}}"
+                    Opacity="0.95"
+                    SnapsToDevicePixels="true">
+                    <Border Background="{Binding IsSelected, Converter={StaticResource SelectedEmergencyCommandMenuConverter}}" IsEnabled="{Binding IsEnabled}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                                <i:InvokeCommandAction Command="{Binding DataContext.SelectedMenuCommand, RelativeSource={RelativeSource AncestorType=ItemsControl, Mode=FindAncestor}}" CommandParameter="{Binding}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                            <TextBlock
+                                Margin="0,0,0,5"
+                                Foreground="{Binding IsEnabled, Converter={StaticResource EmergencyCommandMenuForegroundEnableConverter}}"
+                                Style="{StaticResource FontIcon}"
+                                Text="{Binding Icon}" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontSize="12"
+                                Foreground="{Binding IsEnabled, Converter={StaticResource EmergencyCommandMenuForegroundEnableConverter}}"
+                                Text="{Binding Path=Name}" />
+                        </StackPanel>
+                    </Border>
+                </Border>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+        <ItemsControl.Style>
+            <Style TargetType="ItemsControl">
+                <Style.Triggers>
+                    <Trigger Property="HasItems" Value="False">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Border
+                                        Width="84"
+                                        Height="72"
+                                        Margin="-1"
+                                        Background="#124469"
+                                        BorderBrush="Transparent"
+                                        BorderThickness="1"
+                                        Opacity="0.95"
+                                        SnapsToDevicePixels="true">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Foreground="#CCC">
+                                            Empty
+                                        </TextBlock>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                    <Trigger Property="HasItems" Value="True">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <ScrollViewer
+                                        HorizontalScrollBarVisibility="Auto"
+                                        PanningMode="Both"
+                                        Style="{StaticResource CustomScrollViewerStyle}"
+                                        VerticalScrollBarVisibility="Hidden">
+                                        <ItemsPresenter />
+                                    </ScrollViewer>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ItemsControl.Style>
+    </ItemsControl>
+</u:WidgetBase>

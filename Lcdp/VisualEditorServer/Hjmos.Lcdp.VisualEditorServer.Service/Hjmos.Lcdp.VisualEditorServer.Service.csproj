@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditorServer.ICommon\Hjmos.Lcdp.VisualEditorServer.ICommon.csproj" />
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditorServer.IService\Hjmos.Lcdp.VisualEditorServer.IService.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,20 @@
+﻿<u:WidgetBase x:Class="Hjmos.Lcdp.Plugins.CS6.Views.WeatherTip"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:prism="http://prismlibrary.com/"
+              xmlns:u="clr-namespace:Hjmos.Lcdp.VisualEditor.Core.BaseClass;assembly=Hjmos.Lcdp.VisualEditor.Core"
+              d:DesignHeight="40" d:DesignWidth="450" prism:ViewModelLocator.AutoWireViewModel="True"
+              Foreground="White" mc:Ignorable="d">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBlock FontSize="18px" Text="2022/3/12 15:26:31" />
+            <Border Height="16" Margin="16,0" BorderBrush="#5913FFF5" BorderThickness="1" />
+            <TextBlock Margin="0,0,8,0" FontSize="18px" Text="长沙市" />
+            <Image Width="24" Height="24" Margin="0,0,8,0" Source="/Hjmos.Lcdp.Plugins.CS6;component/Images/多云.png"
+                   Stretch="Fill" />
+            <TextBlock FontSize="18px" Text="多云  27°C" />
+        </StackPanel>
+    </Grid>
+</u:WidgetBase>

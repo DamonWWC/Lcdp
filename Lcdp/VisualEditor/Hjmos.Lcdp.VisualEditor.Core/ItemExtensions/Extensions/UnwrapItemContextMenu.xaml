@@ -1,0 +1,11 @@
+﻿<ContextMenu x:Class="Hjmos.Lcdp.VisualEditor.Core.ItemExtensions.UnwrapItemContextMenu"
+             xmlns="http://schemas.microsoft.com/netfx/2007/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Translation="clr-namespace:Hjmos.Lcdp.VisualEditor.Core"
+>
+    <MenuItem Header="{Binding Unwrap, Source={x:Static Translation:Translations.Instance}}" Click="Click_Unwrap">
+        <MenuItem.Icon>
+            <Image Source="/Hjmos.Lcdp.VisualEditor.Assets;component/Images/wrap-option.png" />
+        </MenuItem.Icon>
+    </MenuItem>
+</ContextMenu>

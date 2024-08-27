@@ -1,0 +1,111 @@
+﻿<UserControl x:Class="Hjmos.Lcdp.EditorManagement.MainModule.Views.MainMgtView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:prism="http://prismlibrary.com/">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style x:Key="TabCloseButtonStyle" TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Name="back" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent"
+                                    CornerRadius="3">
+                                <Path Margin="5" Data="M0 0 8 8M0 8 8 0" Stroke="{TemplateBinding Foreground}" StrokeThickness="1" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="back" Property="Background" Value="#19000000" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="TabItem">
+                <Setter Property="Header" Value="{Binding DataContext.PageTitle}" />
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Margin" Value="2,0" />
+                <Setter Property="Foreground" Value="#444" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="TabItem">
+                            <Grid Height="30" Background="{TemplateBinding Background}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="auto" MinWidth="10" MaxWidth="30" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Margin="10,5,5,5" VerticalAlignment="Center" Text="{TemplateBinding Header}" />
+                                <Grid Name="close_grid" Grid.Column="1" Width="30" Visibility="Collapsed">
+                                    <Button Name="close_btn" Grid.Column="1"
+                                            Command="{Binding DataContext.CloseCommand}"
+                                            CommandParameter="{Binding DataContext.NavUri}"
+                                            Foreground="{TemplateBinding Foreground}"
+                                            Style="{StaticResource TabCloseButtonStyle}"
+                                            Visibility="Collapsed" />
+                                </Grid>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding DataContext.IsCanClose}" Value="True">
+                                    <Setter TargetName="close_grid" Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="close_btn" Property="Visibility" Value="Visible" />
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter TargetName="close_btn" Property="Visibility" Value="Visible" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#EEE" />
+                    </Trigger>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="Background" Value="#00BAC0" />
+                        <Setter Property="Foreground" Value="White" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <ControlTemplate x:Key="TabControlTemplate1" TargetType="{x:Type TabControl}">
+                <Grid x:Name="templateRoot" ClipToBounds="True" KeyboardNavigation.TabNavigation="Local" SnapsToDevicePixels="True">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="0" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TabPanel Grid.Row="0" Grid.Column="0" Margin="2,2,2,0" Panel.ZIndex="1" Background="Transparent"
+                              IsItemsHost="True" KeyboardNavigation.TabIndex="1" />
+                    <Border x:Name="ContentPanel" Grid.Row="1" Grid.Column="0"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            KeyboardNavigation.DirectionalNavigation="Contained" KeyboardNavigation.TabIndex="2"
+                            KeyboardNavigation.TabNavigation="Local">
+                        <ContentPresenter x:Name="PART_SelectedContentHost"
+                                          Margin="{TemplateBinding Padding}"
+                                          Content="{TemplateBinding SelectedContent}"
+                                          ContentSource="SelectedContent"
+                                          ContentStringFormat="{TemplateBinding SelectedContentStringFormat}"
+                                          ContentTemplate="{TemplateBinding SelectedContentTemplate}"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Border>
+                </Grid>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Setter TargetName="templateRoot" Property="TextElement.Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <DockPanel>
+        <Grid Width="230" Background="#232323" DockPanel.Dock="Left">
+            <ContentControl Grid.Row="1" prism:RegionManager.RegionName="LeftMenuTreeRegion" />
+        </Grid>
+        <TabControl Margin="5" prism:RegionManager.RegionName="MainMgtContentRegion" BorderThickness="0"
+                    Style="{x:Null}"
+                    Template="{DynamicResource TabControlTemplate1}" />
+    </DockPanel>
+</UserControl>

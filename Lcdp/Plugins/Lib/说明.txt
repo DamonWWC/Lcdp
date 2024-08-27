@@ -1,0 +1,1 @@
+Config文件夹拷贝到“\Hjmos.Lcdp\VisualEditor\output”下

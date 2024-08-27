@@ -1,0 +1,59 @@
+﻿<Grid x:Class="Hjmos.Lcdp.VisualEditor.Views.NonClientAreaContent"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:converter="clr-namespace:Hjmos.Lcdp.Converters;assembly=Hjmos.Lcdp.Converters"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:prism="http://prismlibrary.com/"
+      xmlns:svgc="http://sharpvectors.codeplex.com/svgc/" Height="32"
+      prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid.Resources>
+        <Style x:Key="buttonStyle" TargetType="CheckBox">
+            <Setter Property="FontSize" Value="16px" />
+            <Setter Property="Foreground" Value="#6C6C6C" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <ContentPresenter />
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#FFF" />
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Foreground" Value="#FFF" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Grid.Resources>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+    </Grid.ColumnDefinitions>
+    <!-- 菜单栏 -->
+    <StackPanel Margin="6,6" Orientation="Horizontal">
+        <svgc:SvgViewbox Width="13.98" Height="16" Margin="20,0,12,0" IsHitTestVisible="False"
+                         Source="pack://application:,,,/Hjmos.Lcdp.VisualEditor.Assets;component/Images/Header/可视化编辑器logo.svg" />
+        <CheckBox Margin="0,0,6,0" Content="设计" IsChecked="{Binding Path=CheckedIndex, Converter={x:Static converter:IntToBoolConverter.Instance}, ConverterParameter=1}" Style="{StaticResource buttonStyle}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Checked">
+                    <prism:InvokeCommandAction Command="{Binding NavigateCommand}" CommandParameter="EditorView" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </CheckBox>
+        <CheckBox Margin="0,0,6,0" Content="管理" IsChecked="{Binding Path=CheckedIndex, Converter={x:Static converter:IntToBoolConverter.Instance}, ConverterParameter='2'}" Style="{StaticResource buttonStyle}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Checked">
+                    <prism:InvokeCommandAction Command="{Binding NavigateCommand}" CommandParameter="MainMgtView" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </CheckBox>
+    </StackPanel>
+    <!-- 标题栏 -->
+    <StackPanel Grid.Column="1" Margin="0,5" HorizontalAlignment="Center" Orientation="Horizontal">
+        <TextBlock Grid.Column="1" Margin="10,0" VerticalAlignment="Center" FontSize="16" Foreground="#FFF">
+            可视化编辑器
+        </TextBlock>
+    </StackPanel>
+</Grid>

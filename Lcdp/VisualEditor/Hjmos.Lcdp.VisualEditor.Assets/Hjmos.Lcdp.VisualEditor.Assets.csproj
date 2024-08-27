@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AE85C16F-2786-4948-820A-57CCB793169A}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>Hjmos.Lcdp.VisualEditor.Assets</RootNamespace>
+    <AssemblyName>Hjmos.Lcdp.VisualEditor.Assets</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\output\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Resource Include="Fonts\EditorIcon.ttf" />
+    <Resource Include="Fonts\MgtIcon.ttf" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\canvas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Class.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\edit-bold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\edit-color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\edit-italic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\edit-strike.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\edit-underline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\grid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\group2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons.16x16.CopyIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons.16x16.CutIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons.16x16.DeleteIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons.16x16.GridSnap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons.16x16.GuideSnap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons.16x16.PasteIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons.16x16.Properties.Categorized.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons.16x16.Properties.Events.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons.16x16.Properties.Properties.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons.16x16.Properties.SortAlphabet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons.16x16.RedoIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons.16x16.UndoIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons.16x16.WpfOutline.Eye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons.16x16.WpfOutline.EyeClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons.32x32.EmptyProjectIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\layers-alignment-bottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\layers-alignment-center.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\layers-alignment-left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\layers-alignment-middle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\layers-alignment-right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\layers-alignment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\layers-arrange-back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\layers-arrange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\layers-stack-arrange-back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\layers-stack-arrange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\paint-can-color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\PanToolCursor.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\PanToolCursorMouseDown.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\rotate.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\wrap-option.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ZoomIn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ZoomOut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Header\可视化编辑器logo.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\LeftSide\搜索.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Toolbar\保存.png" />
+    <Resource Include="Images\Toolbar\减少.png" />
+    <Resource Include="Images\Toolbar\加载页面.png" />
+    <Resource Include="Images\Toolbar\吸附.png" />
+    <Resource Include="Images\Toolbar\增加.png" />
+    <Resource Include="Images\Toolbar\网格.png" />
+    <Resource Include="Images\Toolbar\置于底部.png" />
+    <Resource Include="Images\Toolbar\顶部对齐.png" />
+    <Resource Include="Images\Toolbar\预览.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\LeftSide\组件.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\LeftSide\图层.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\RightSide\右对齐.png" />
+    <Resource Include="Images\RightSide\垂直对齐.png" />
+    <Resource Include="Images\RightSide\居中.png" />
+    <Resource Include="Images\RightSide\居中对齐.png" />
+    <Resource Include="Images\RightSide\左对齐.png" />
+    <Resource Include="Images\RightSide\底部对齐.png" />
+    <Resource Include="Images\RightSide\水平对齐.png" />
+    <Resource Include="Images\RightSide\顶部对齐.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\LeftSide\删除.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\LeftSide\画布.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

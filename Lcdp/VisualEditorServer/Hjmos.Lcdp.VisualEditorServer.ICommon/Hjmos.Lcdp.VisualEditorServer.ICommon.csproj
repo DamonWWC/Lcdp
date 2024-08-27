@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditorServer.EFCore\Hjmos.Lcdp.VisualEditorServer.EFCore.csproj" />
+  </ItemGroup>
+
+</Project>

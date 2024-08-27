@@ -1,0 +1,12 @@
+﻿<hc:GlowWindow x:Class="Hjmos.Lcdp.VisualEditor.Views.MainWindow"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:hc="https://handyorg.github.io/handycontrol" xmlns:prism="http://prismlibrary.com/"
+               Title="Visual Editor" Width="1920" Height="1080" prism:ViewModelLocator.AutoWireViewModel="True"
+               Background="{DynamicResource SecondaryRegionBrush}"
+               FontFamily="Microsoft YaHei" FontWeight="ExtraLight" ResizeMode="CanResizeWithGrip"
+               ShowTitle="False"
+               Style="{StaticResource WindowMain}"
+               WindowState="Maximized">
+    <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+</hc:GlowWindow>

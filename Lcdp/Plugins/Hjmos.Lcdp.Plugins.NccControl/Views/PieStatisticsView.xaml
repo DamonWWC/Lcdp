@@ -1,0 +1,107 @@
+﻿<u:WidgetBase
+    x:Class="Hjmos.Lcdp.Plugins.NccControl.Views.PieStatisticsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="clr-namespace:CalcBinding;assembly=CalcBinding"
+    xmlns:converter="clr-namespace:Hjmos.Lcdp.Plugins.NccControl.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hj="clr-namespace:Hjmos.BaseControls.Controls;assembly=Hjmos.BaseControls"
+    xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:u="clr-namespace:Hjmos.Lcdp.VisualEditor.Core.BaseClass;assembly=Hjmos.Lcdp.VisualEditor.Core"
+    d:DesignHeight="200" d:DesignWidth="360" prism:ViewModelLocator.AutoWireViewModel="True"
+    Background="#FF072945" mc:Ignorable="d">
+    <!-- 预警统计 -->
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Hjmos.BaseControls;component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <converter:PieChartPointsConverter x:Key="PieChartPointsConverter" />
+            <converter:HeightToMarginConverter x:Key="HeightToMarginConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <TextBlock
+            Grid.Row="0" Margin="12,10,0,5" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14"
+            Foreground="White"
+            Text="{Binding Title}" />
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <hj:SimplePanel>
+                <lvc:PieChart
+                    x:Name="Peichart" Width="126" Height="126"
+                    Margin="{Binding ActualHeight, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource HeightToMarginConverter}}"
+                    BorderBrush="Transparent"
+                    DataTooltip="{x:Null}"
+                    Hoverable="False"
+                    InnerRadius="{c:Binding ActualHeight*0.3, RelativeSource={RelativeSource Mode=Self}}"
+                    Series="{Binding SeriesCollection}"
+                    SeriesColors="{Binding ColorsCollection}"
+                    StartingRotationAngle="270" />
+                <Ellipse Width="140" Height="140" Stroke="#FF17557F" StrokeThickness="1" />
+            </hj:SimplePanel>
+            <ListBox
+                Name="ListBox" Grid.Column="1" Margin="20,0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                Background="Transparent" BorderThickness="0"
+                ItemsSource="{Binding SeriesCollection}"
+                Style="{StaticResource ListBoxBaseStyle1}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <Ellipse
+                                Width="8" Height="8" Margin="0,0,8,0" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                Fill="{Binding (lvc:PieSeries.Fill)}" />
+                            <TextBlock
+                                Grid.Column="1" Margin="0,0,16,0" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                FontSize="10" Foreground="White"
+                                Text="{Binding (lvc:PieSeries.Title)}" />
+                            <TextBlock
+                                Grid.Column="2" Margin="0,0,16,0" HorizontalAlignment="Left" VerticalAlignment="Center"
+                                FontSize="10" Foreground="White"
+                                Text="{Binding (lvc:PieSeries.ChartPoints), Converter={StaticResource PieChartPointsConverter}, Mode=OneWay}" />
+                            <TextBlock
+                                Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="10"
+                                Foreground="White"
+                                Text="{Binding (lvc:PieSeries.Tag), StringFormat={}{0:P1}}" />
+                        </Grid>
+
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Margin" Value="5" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+        </Grid>
+        <TextBlock
+            Grid.Row="2" Margin="0,2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="8"
+            Foreground="White" Opacity="0.65"
+            Text="{Binding DeadLine, StringFormat=截止当前时间: {0:yyyy/MM/dd HH:mm:ss}}" />
+
+    </Grid>
+</u:WidgetBase>

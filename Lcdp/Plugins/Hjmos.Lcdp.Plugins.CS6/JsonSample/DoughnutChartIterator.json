@@ -1,0 +1,44 @@
+{
+  "doughnuts": [
+    {
+      "startColor": "#001C3F5D",
+      "endColor": "#00FFF8",
+      "value": 32
+    },
+    {
+      "startColor": "#001C3F5D",
+      "endColor": "#00FFF8",
+      "value": 15
+    },
+    {
+      "startColor": "#001C3F5D",
+      "endColor": "#00FFF8",
+      "value": 34
+    },
+    {
+      "startColor": "#001C3F5D",
+      "endColor": "#00FFF8",
+      "value": 12
+    },
+    {
+      "startColor": "#001C3F5D",
+      "endColor": "#00FFF8",
+      "value": 98
+    },
+    {
+      "startColor": "#001C3F5D",
+      "endColor": "#00FFF8",
+      "value": 80
+    },
+    {
+      "startColor": "#001C3F5D",
+      "endColor": "#00FFF8",
+      "value": 3
+    },
+    {
+      "startColor": "#001C3F5D",
+      "endColor": "#00FFF8",
+      "value": 76
+    }
+  ]
+}

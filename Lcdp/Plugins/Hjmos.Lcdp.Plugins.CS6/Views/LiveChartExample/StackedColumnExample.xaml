@@ -1,0 +1,22 @@
+﻿<u:WidgetBase x:Class="Hjmos.Lcdp.Plugins.CS6.Views.LiveChartExample.StackedColumnExample"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:prism="http://prismlibrary.com/"
+              xmlns:u="clr-namespace:Hjmos.Lcdp.VisualEditor.Core.BaseClass;assembly=Hjmos.Lcdp.VisualEditor.Core"
+              xmlns:wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" d:DesignHeight="450"
+              d:DesignWidth="800" prism:ViewModelLocator.AutoWireViewModel="True" mc:Ignorable="d">
+    <Grid>
+        <wpf:CartesianChart Series="{Binding StackedColumnExampleModel.SeriesCollection}">
+            <wpf:CartesianChart.AxisX>
+                <wpf:Axis Labels="{Binding StackedColumnExampleModel.Labels}">
+                    <wpf:Axis.Separator>
+                        <!-- step 1 forces the axis to display all labels, disabling it makes it invisible -->
+                        <wpf:Separator IsEnabled="False" Step="1" />
+                    </wpf:Axis.Separator>
+                </wpf:Axis>
+            </wpf:CartesianChart.AxisX>
+        </wpf:CartesianChart>
+    </Grid>
+</u:WidgetBase>

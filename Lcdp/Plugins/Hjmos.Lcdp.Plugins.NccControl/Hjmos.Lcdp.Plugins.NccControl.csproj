@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7CA18539-2975-4741-82E8-7C372D25101D}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>Hjmos.Lcdp.Plugins.NccControl</RootNamespace>
+    <AssemblyName>Hjmos.Lcdp.Plugins.NccControl</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Hjmos.BaseControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Hjmos.BaseControls.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts">
+      <HintPath>..\Lib\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf">
+      <HintPath>..\Lib\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\Carousel1.cs" />
+    <Compile Include="Controls\SimpleItemsControl.cs" />
+    <Compile Include="Models\EmergencyEvent.cs" />
+    <Compile Include="ViewModels\EmergencyCommandMenuViewModel.cs" />
+    <Compile Include="ViewModels\PieStatisticsViewModel.cs" />
+    <Compile Include="ViewModels\UCCarousel1ViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\EmergencyCommandMenuView.xaml.cs">
+      <DependentUpon>EmergencyCommandMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PieStatisticsView.xaml.cs">
+      <DependentUpon>PieStatisticsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UCCarousel1.xaml.cs">
+      <DependentUpon>UCCarousel1.xaml</DependentUpon>
+    </Compile>
+    <Resource Include="Resource\TestLoadXaml.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Page Include="Styles\Carousel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\FontIcon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ScrollViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Converters\EmergencyCommandMenuConverter.cs" />
+    <Compile Include="Converters\HeightToMarginConverter.cs" />
+    <Compile Include="Converters\PieChartPointsConverter.cs" />
+    <Compile Include="DataFields\PieStatisticsDataFields.cs" />
+    <Compile Include="Models\EmergencyCommandMenuModel.cs" />
+    <Compile Include="Models\MonitorStatistics.cs" />
+    <Page Include="Views\EmergencyCommandMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PieStatisticsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UCCarousel1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Resource Include="Themes\iconfont.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Hjmos.Lcdp\Hjmos.Lcdp.csproj">
+      <Project>{491A73CF-71AE-4542-99BD-D763FE61B761}</Project>
+      <Name>Hjmos.Lcdp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VisualEditorServer\Hjmos.Lcdp.VisualEditorServer.Entities\Hjmos.Lcdp.VisualEditorServer.Entities.csproj">
+      <Project>{8fad9501-3080-41ea-8c1f-d841780666b1}</Project>
+      <Name>Hjmos.Lcdp.VisualEditorServer.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VisualEditor\Hjmos.Lcdp.VisualEditor.Core\Hjmos.Lcdp.VisualEditor.Core.csproj">
+      <Project>{7c932091-ed1f-42d3-aab1-5249d8963339}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VisualEditor\Hjmos.Lcdp.VisualEditor.Models\Hjmos.Lcdp.VisualEditor.Models.csproj">
+      <Project>{DD6B19E1-092F-4C66-B0F9-BDE34E10C506}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CalcBinding">
+      <Version>2.5.2</Version>
+    </PackageReference>
+    <PackageReference Include="Gu.Wpf.Geometry">
+      <Version>2.2.8</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Unity">
+      <Version>8.1.97</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>mkdir "$(SolutionDir)VisualEditor\output\Plugins\NccControl"
+xcopy /r /y "Hjmos.Lcdp.Plugins.NccControl.dll" "$(SolutionDir)VisualEditor\output\Plugins\NccControl"
+xcopy /r /y "Gu.Wpf.Geometry.dll" "$(SolutionDir)VisualEditor\output\Plugins\NccControl"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

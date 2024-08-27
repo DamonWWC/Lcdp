@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="Hjmos.Lcdp.EditorManagement.PageModule.Views.ModuleDirectoryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:converter="clr-namespace:Hjmos.Lcdp.Converters;assembly=Hjmos.Lcdp.Converters" xmlns:hc="https://handyorg.github.io/handycontrol"
+             prism:ViewModelLocator.AutoWireViewModel="True" >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <prism:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+                    <DataTemplate x:Key="ComponentItem" DataType="models:ComponentItemModel">
+                        <StackPanel Margin="30" Width="90">
+                            <StackPanel.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="复制GUID" Command="{Binding CopyCommand}" CommandParameter="{Binding}"/>
+                                    <MenuItem Header="重命名" Command="{Binding RenameCommand}" CommandParameter="{Binding}" />
+                                    <MenuItem Header="删除" Command="{Binding DeleteCommand}" CommandParameter="{Binding}" />
+                                </ContextMenu>
+                            </StackPanel.ContextMenu>
+                            <TextBlock Text="{Binding Icon}" FontFamily="{StaticResource MgtIcon}" FontSize="60" Foreground="#999" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                            <TextBlock Text="{Binding Name}" FontFamily="{StaticResource MgtIcon}" FontSize="20" Foreground="#666" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal" Margin="5,10">
+            <TextBlock Text="&#xe60b;" FontFamily="{StaticResource MgtIcon}" FontSize="24" Foreground="#999" Margin="5,0">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PreviewMouseDown">
+                        <prism:InvokeCommandAction Command="{Binding HomeCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBlock>
+            <hc:SearchBar Name="SearchBarCustomVerify" Width="300" Margin="5,5" ShowClearButton="True" Style="{StaticResource SearchBarPlus}"/>
+            <Button Content="新建页面" Style="{StaticResource ButtonPrimary}" Width="70" Height="30" Margin="5,0" IsEnabled="{Binding CanAddFile}" Command="{Binding AddPageCommand}"/>
+            <Button Content="新建应用" Style="{StaticResource ButtonPrimary}" Width="70" Height="30" Margin="5,0" Command="{Binding AddDirectoryCommand}"/>
+        </StackPanel>
+        <ListBox Style="{x:Null}" Grid.Row="1" BorderThickness="0" ItemsSource="{Binding DirectoryList}" SelectedItem="{Binding SelectedItem}" ItemTemplate="{StaticResource ComponentItem}"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <prism:InvokeCommandAction Command="{Binding OpenDirectoryCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="编辑" Style="{StaticResource ButtonPrimary}" Visibility="{Binding IsFile, Converter={StaticResource BoolToVisibilityConverter}}" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding OpenCommand}" />
+                <Button Content="预览" Style="{StaticResource ButtonPrimary}" Visibility="{Binding IsFile, Converter={StaticResource BoolToVisibilityConverter}}" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding PreviewCommand}" />
+                <TextBlock Margin="5,0" Text="{Binding SelectedItem.Guid}" Visibility="{Binding IsFile, Converter={StaticResource BoolToVisibilityConverter}}" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

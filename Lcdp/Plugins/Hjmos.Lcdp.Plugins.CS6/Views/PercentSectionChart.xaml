@@ -1,0 +1,117 @@
+﻿<UserControl
+    x:Class="Hjmos.Lcdp.Plugins.CS6.Views.PercentSectionChart"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:Hjmos.Lcdp.Plugins.CS6.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/" x:Name="uc" d:DesignHeight="400" d:DesignWidth="400"
+    prism:ViewModelLocator.AutoWireViewModel="True" mc:Ignorable="d">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <ItemsControl Margin="0,12,0,24" HorizontalAlignment="Center" VerticalAlignment="Top" ItemsSource="{Binding Series[0].Sections, ElementName=uc}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="1" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="18,0" Orientation="Horizontal">
+                        <Rectangle
+                            Width="12px" Height="6px" Margin="6,0" VerticalAlignment="Center"
+                            Fill="{Binding Color}" />
+                        <TextBlock VerticalAlignment="Center" FontSize="10" Foreground="White" Text="{Binding Label}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <Border Grid.Row="1">
+            <ItemsControl AlternationCount="10000" ItemsSource="{Binding Series, ElementName=uc}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <!-- 根据组件高度自动计算行高 -->
+                            <Grid.Height>
+                                <MultiBinding Converter="{x:Static converter:PercentHeightConverter.Instance}">
+                                    <Binding Path="ActualHeight" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Border}" />
+                                    <Binding ElementName="uc" Path="RowCount" />
+                                </MultiBinding>
+                            </Grid.Height>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <!-- 自动生成序号 -->
+                            <StackPanel Margin="0,8" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                                <TextBlock FontSize="14px" Foreground="White" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource Mode=TemplatedParent}, StringFormat=TOP {0}：, Converter={x:Static converter:AddOneConverter.Instance}}" />
+                                <TextBlock Margin="10,0,0,0" FontSize="14px" Foreground="White" Text="{Binding Station}" />
+                            </StackPanel>
+                            <TextBlock
+                                HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" FontWeight="Medium"
+                                Foreground="White"
+                                Text="{Binding Total, StringFormat=N0}" />
+
+                            <ItemsControl Grid.Row="1" VerticalAlignment="Top" ItemsSource="{Binding Sections}" Tag="{Binding Total}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border
+                                            Height="20px"
+                                            Margin="{Binding Gap, ElementName=uc, Converter={x:Static converter:PercentGapConverter.Instance}}"
+                                            VerticalAlignment="Center"
+                                            Background="{Binding Color}"
+                                            CornerRadius="1">
+                                            <!-- 根据百分比自动计算宽度 -->
+                                            <Border.Width>
+                                                <MultiBinding Converter="{x:Static converter:PercentWidthConverter.Instance}">
+                                                    <Binding Path="ActualWidth" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=Grid}" />
+                                                    <Binding Path="Tag" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}" />
+                                                    <Binding Path="Value" />
+                                                    <Binding Path="ItemsSource.Count" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}" />
+                                                    <Binding ElementName="uc" Path="Gap" />
+                                                </MultiBinding>
+                                            </Border.Width>
+                                            <TextBlock
+                                                HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Medium"
+                                                Foreground="White"
+                                                Text="{Binding Value, StringFormat=N0}" />
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.Style>
+                    <Style TargetType="ItemsControl">
+                        <Style.Triggers>
+                            <Trigger Property="HasItems" Value="False">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate>
+                                            <Border
+                                                Margin="-1" Background="#124469" BorderBrush="Transparent" BorderThickness="1" Opacity="0.95"
+                                                SnapsToDevicePixels="true">
+                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#CCC">
+                                                    Empty
+                                                </TextBlock>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ItemsControl.Style>
+            </ItemsControl>
+        </Border>
+    </Grid>
+</UserControl>

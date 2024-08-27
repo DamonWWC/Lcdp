@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EFCore.NamingConventions" Version="6.0.0" />
+    <PackageReference Include="MySql.EntityFrameworkCore" Version="6.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditorServer.Entities\Hjmos.Lcdp.VisualEditorServer.Entities.csproj" />
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditorServer.EntityConfig\Hjmos.Lcdp.VisualEditorServer.EntityConfig.csproj" />
+  </ItemGroup>
+
+</Project>

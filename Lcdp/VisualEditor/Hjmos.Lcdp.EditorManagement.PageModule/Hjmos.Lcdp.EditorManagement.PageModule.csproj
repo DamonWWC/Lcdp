@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{94DFCE10-CF71-4A23-8CBC-B06B8A8486F0}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>Hjmos.Lcdp.EditorManagement.PageModule</RootNamespace>
+    <AssemblyName>Hjmos.Lcdp.EditorManagement.PageModule</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\output\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="PageModule.cs" />
+    <Compile Include="ViewModels\AddDirectoryDialogViewModel.cs" />
+    <Compile Include="ViewModels\AddLibDialogViewModel.cs" />
+    <Compile Include="ViewModels\AddPageDialogViewModel.cs" />
+    <Compile Include="ViewModels\InterfaceManagementViewModel.cs" />
+    <Compile Include="ViewModels\ModifyLibConfigDialogViewModel.cs" />
+    <Compile Include="ViewModels\ModuleDirectoryViewModel.cs" />
+    <Compile Include="ViewModels\WidgetListDialogViewModel.cs" />
+    <Compile Include="ViewModels\WidgetUploadViewModel.cs" />
+    <Compile Include="ViewModels\WorkflowViewModel.cs" />
+    <Compile Include="Views\AddDirectoryDialog.xaml.cs">
+      <DependentUpon>AddDirectoryDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddLibDialog.xaml.cs">
+      <DependentUpon>AddLibDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddPageDialog.xaml.cs">
+      <DependentUpon>AddPageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InterfaceManagementView.xaml.cs">
+      <DependentUpon>InterfaceManagementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModifyLibConfigDialog.xaml.cs">
+      <DependentUpon>ModifyLibConfigDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModuleDirectoryView.xaml.cs">
+      <DependentUpon>ModuleDirectoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WidgetListDialog.xaml.cs">
+      <DependentUpon>WidgetListDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WidgetUploadView.xaml.cs">
+      <DependentUpon>WidgetUploadView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WorkflowView.xaml.cs">
+      <DependentUpon>WorkflowView.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="HandyControl">
+      <Version>3.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Unity">
+      <Version>8.1.97</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\AddDirectoryDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AddLibDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AddPageDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\InterfaceManagementView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ModifyLibConfigDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ModuleDirectoryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WidgetListDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WidgetUploadView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WorkflowView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Hjmos.Lcdp.Converters\Hjmos.Lcdp.Converters.csproj">
+      <Project>{25e5e527-fd7e-4d7a-aab9-bacd7e666e07}</Project>
+      <Name>Hjmos.Lcdp.Converters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Hjmos.Lcdp\Hjmos.Lcdp.csproj">
+      <Project>{491A73CF-71AE-4542-99BD-D763FE61B761}</Project>
+      <Name>Hjmos.Lcdp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VisualEditorServer\Hjmos.Lcdp.VisualEditorServer.Entities\Hjmos.Lcdp.VisualEditorServer.Entities.csproj">
+      <Project>{8FAD9501-3080-41EA-8C1F-D841780666B1}</Project>
+      <Name>Hjmos.Lcdp.VisualEditorServer.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VisualEditor\Hjmos.Lcdp.VisualEditor.Core\Hjmos.Lcdp.VisualEditor.Core.csproj">
+      <Project>{7C932091-ED1F-42D3-AAB1-5249D8963339}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VisualEditor\Hjmos.Lcdp.VisualEditor.IService\Hjmos.Lcdp.VisualEditor.IService.csproj">
+      <Project>{F6B148BE-0E1F-488C-9335-21EB4824D322}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.IService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VisualEditor\Hjmos.Lcdp.VisualEditor.Models\Hjmos.Lcdp.VisualEditor.Models.csproj">
+      <Project>{DD6B19E1-092F-4C66-B0F9-BDE34E10C506}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

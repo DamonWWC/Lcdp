@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0C8040DB-B76A-479B-AF7D-DE11B6EB449A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hjmos.Lcdp.VisualEditor</RootNamespace>
+    <AssemblyName>Hjmos.Lcdp.VisualEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\output\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Plugins\Lib\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Plugins\Lib\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\NonClientAreaContentViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NonClientAreaContent.xaml.cs">
+      <DependentUpon>NonClientAreaContent.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CefSharp.Wpf">
+      <Version>99.2.140</Version>
+    </PackageReference>
+    <PackageReference Include="HandyControl">
+      <Version>3.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Unity" Version="8.1.97" />
+    <PackageReference Include="Refit">
+      <Version>6.3.2</Version>
+    </PackageReference>
+    <PackageReference Include="SharpVectors">
+      <Version>1.7.6</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Themes\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Styles\BaseResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Styles\ComboBoxStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Styles\PropertyGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Styles\ZoomBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LoginView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NonClientAreaContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Hjmos.Lcdp.Converters\Hjmos.Lcdp.Converters.csproj">
+      <Project>{25e5e527-fd7e-4d7a-aab9-bacd7e666e07}</Project>
+      <Name>Hjmos.Lcdp.Converters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Hjmos.Lcdp\Hjmos.Lcdp.csproj">
+      <Project>{491A73CF-71AE-4542-99BD-D763FE61B761}</Project>
+      <Name>Hjmos.Lcdp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Managers\Hjmos.Lcdp.ILoger\Hjmos.Lcdp.ILoger.csproj">
+      <Project>{E8677E08-55D8-4308-A645-5A968DFE2065}</Project>
+      <Name>Hjmos.Lcdp.ILoger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Managers\Hjmos.Lcdp.Loger\Hjmos.Lcdp.Loger.csproj">
+      <Project>{F86DAB80-FCE8-4C6E-AC95-587920345E5C}</Project>
+      <Name>Hjmos.Lcdp.Loger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VisualEditorServer\Hjmos.Lcdp.VisualEditorServer.Entities\Hjmos.Lcdp.VisualEditorServer.Entities.csproj">
+      <Project>{8fad9501-3080-41ea-8c1f-d841780666b1}</Project>
+      <Name>Hjmos.Lcdp.VisualEditorServer.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hjmos.Lcdp.EditorManagement.MainModule\Hjmos.Lcdp.EditorManagement.MainModule.csproj">
+      <Project>{94835e6d-939a-409a-ac60-8974582792fa}</Project>
+      <Name>Hjmos.Lcdp.EditorManagement.MainModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hjmos.Lcdp.EditorManagement.PageModule\Hjmos.Lcdp.EditorManagement.PageModule.csproj">
+      <Project>{94dfce10-cf71-4a23-8cbc-b06b8a8486f0}</Project>
+      <Name>Hjmos.Lcdp.EditorManagement.PageModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditor.Assets\Hjmos.Lcdp.VisualEditor.Assets.csproj">
+      <Project>{ae85c16f-2786-4948-820a-57ccb793169a}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.Assets</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditor.Core\Hjmos.Lcdp.VisualEditor.Core.csproj">
+      <Project>{7C932091-ED1F-42D3-AAB1-5249D8963339}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditor.IService\Hjmos.Lcdp.VisualEditor.IService.csproj">
+      <Project>{f6b148be-0e1f-488c-9335-21eb4824d322}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.IService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditor.MainModule\Hjmos.Lcdp.VisualEditor.MainModule.csproj">
+      <Project>{6C7313AD-8948-48FD-8B9F-D69F41C9313E}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.MainModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditor.Models\Hjmos.Lcdp.VisualEditor.Models.csproj">
+      <Project>{dd6b19e1-092f-4c66-b0f9-bde34e10c506}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditor.Service\Hjmos.Lcdp.VisualEditor.Service.csproj">
+      <Project>{6b4f1c78-f541-4265-8eac-365978497655}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

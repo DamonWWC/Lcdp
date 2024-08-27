@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Hjmos.Lcdp.VisualEditor.Controls.DesignerControls.GridUnitSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             HorizontalContentAlignment="Left" VerticalContentAlignment="Top"
+             Background="Transparent" IsHitTestVisible="True"
+             Padding="6" x:Name="control">
+    <UserControl.Resources>
+        <Style TargetType="RadioButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <ToggleButton Name="toggleButton"
+							IsChecked="{Binding Path=IsChecked, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+							Content="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"
+							Padding="{Binding Path=Padding, RelativeSource={RelativeSource TemplatedParent}}"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Border CornerRadius="3" BorderBrush="CornflowerBlue" Background="LightBlue" BorderThickness="1">
+        <StackPanel
+			Orientation="{Binding Orientation, ElementName=control}">
+            <RadioButton x:Name="fixed" Content="Fixed" Margin="1" FontSize="8" ToolTip="固定列宽" GroupName="group" Checked="FixedChecked" />
+            <RadioButton x:Name="star" Margin="1" FontSize="16" ToolTip="加权比例" GroupName="group" Checked="StarChecked">
+                <TextBlock Text="*" Margin="3,-4,3,-8" />
+            </RadioButton>
+            <RadioButton x:Name="auto" Content="Auto" Margin="1" FontSize="8" ToolTip="列宽由内容决定" GroupName="group" Checked="AutoChecked" />
+        </StackPanel>
+    </Border>
+</UserControl>

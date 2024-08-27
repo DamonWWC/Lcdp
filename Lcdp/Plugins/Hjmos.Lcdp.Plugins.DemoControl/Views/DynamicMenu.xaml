@@ -1,0 +1,20 @@
+﻿<u:WidgetBase x:Class="Hjmos.Lcdp.Plugins.DemoControl.Views.DynamicMenu"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:u="clr-namespace:Hjmos.Lcdp.VisualEditor.Core.BaseClass;assembly=Hjmos.Lcdp.VisualEditor.Core"
+              xmlns:prism="http://prismlibrary.com/"             
+              prism:ViewModelLocator.AutoWireViewModel="True">
+    <!--页面切换菜单-->
+    <ListBox x:Name="lstTab" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionChanged="lstTab_SelectionChanged">
+        <ListBox.ItemsPanel>
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Horizontal" />
+            </ItemsPanelTemplate>
+        </ListBox.ItemsPanel>
+        <ListBox.ItemTemplate>
+            <DataTemplate>
+                <TextBlock Text="{Binding Key}"></TextBlock>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
+</u:WidgetBase>

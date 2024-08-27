@@ -1,0 +1,613 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CCE2C1BE-F1EB-4735-8B18-8F8795E3E7F5}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>Hjmos.Lcdp.VisualEditor.Controls</RootNamespace>
+    <AssemblyName>Hjmos.Lcdp.VisualEditor.Controls</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Deterministic>true</Deterministic>
+    <CefSharpAnyCpuSupport>true</CefSharpAnyCpuSupport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\output\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\HJMos_NCC_Client\Work\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\HJMos_NCC_Client\Work\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Adorners\AdornerLayer.cs" />
+    <Compile Include="Adorners\AdornerOrder.cs" />
+    <Compile Include="Adorners\AdornerPanel.cs" />
+    <Compile Include="Adorners\AdornerPanelCollection.cs" />
+    <Compile Include="Adorners\AdornerPanelCollectionAdapter.cs" />
+    <Compile Include="Adorners\AdornerPlacement.cs" />
+    <Compile Include="Adorners\AdornerProvider.cs" />
+    <Compile Include="Adorners\AdornerProviderClasses.cs" />
+    <Compile Include="Adorners\FillContentPlacement.cs" />
+    <Compile Include="Adorners\GridRailAdorner.cs" />
+    <Compile Include="Adorners\GridColumnSplitterAdorner.cs" />
+    <Compile Include="Adorners\GridRowSplitterAdorner.cs" />
+    <Compile Include="Adorners\GridSplitterAdorner.cs" />
+    <Compile Include="Adorners\IAdornerLayer.cs" />
+    <Compile Include="Adorners\RelativePlacement.cs" />
+    <Compile Include="ArrangeDirection.cs" />
+    <Compile Include="Attached\CustomXamlAttached.cs" />
+    <Compile Include="Attached\LoadedCodeAttached.cs" />
+    <Compile Include="BaseClass\WidgetControlBase.cs" />
+    <Compile Include="ChangeGroup.cs" />
+    <Compile Include="Commands.cs" />
+    <Compile Include="ContainerDragHandle.cs" />
+    <Compile Include="DesignerControls\CanvasPositionHandle.cs" />
+    <Compile Include="Converters.cs" />
+    <Compile Include="DesignerControls\ClearableTextBox.cs" />
+    <Compile Include="DesignerControls\Converters\HandleLengthWithOffset.cs" />
+    <Compile Include="DesignerControls\EnterTextBox.cs" />
+    <Compile Include="DesignerControls\ErrorBalloon.cs" />
+    <Compile Include="DesignerControls\GrayOutDesignerExceptActiveArea.cs" />
+    <Compile Include="DesignerControls\GridUnitSelector.xaml.cs">
+      <DependentUpon>GridUnitSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerControls\HandleOrientation.cs" />
+    <Compile Include="DesignerControls\InPlaceEditor.cs" />
+    <Compile Include="DesignerControls\MarginHandle.cs" />
+    <Compile Include="DesignerControls\MarginStub.cs" />
+    <Compile Include="DesignerControls\QuickOperationMenu.cs" />
+    <Compile Include="DesignerControls\RelayCommand.cs" />
+    <Compile Include="DesignerControls\RenderTransformOriginThumb.cs" />
+    <Compile Include="DesignerControls\SelectionFrame.cs" />
+    <Compile Include="DesignerControls\SizeDisplay.cs" />
+    <Compile Include="DesignerControls\WindowClone.cs" />
+    <Compile Include="DesignerPropertyGrid\Category.cs" />
+    <Compile Include="DesignerPropertyGrid\EditorManager.cs" />
+    <Compile Include="DesignerPropertyGrid\Editors\CollectionEditor.xaml.cs">
+      <DependentUpon>CollectionEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerPropertyGrid\Editors\CollectionTemplateSelector.cs" />
+    <Compile Include="DesignerPropertyGrid\Editors\FormatedTextEditor\FormatedTextEditor.xaml.cs">
+      <DependentUpon>FormatedTextEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerPropertyGrid\Editors\FormatedTextEditor\RichTextBoxToolbar.xaml.cs">
+      <DependentUpon>RichTextBoxToolbar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerPropertyGrid\FlatCollectionEditor.xaml.cs">
+      <DependentUpon>FlatCollectionEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerPropertyGrid\PropertyContextMenu.xaml.cs">
+      <DependentUpon>PropertyContextMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DesignerPropertyGrid\PropertyEditorAttribute.cs" />
+    <Compile Include="DesignerPropertyGrid\PropertyGrid.cs" />
+    <Compile Include="DesignerPropertyGrid\PropertyGridView.cs" />
+    <Compile Include="DesignerPropertyGrid\PropertyNode.cs" />
+    <Compile Include="DesignerPropertyGrid\SortedObservableCollection.cs" />
+    <Compile Include="DesignerPropertyGrid\TypeEditorAttribute.cs" />
+    <Compile Include="DesignerPropertyGrid\TypeHelper.cs" />
+    <Compile Include="DesignItemPropertyCollection.cs" />
+    <Compile Include="DrawItemExtension.cs" />
+    <Compile Include="DummyValueInsteadOfNullTypeDescriptionProvider.cs" />
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Extensions2\ArrangeItemsContextMenu.xaml.cs">
+      <DependentUpon>ArrangeItemsContextMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions2\ArrangeItemsContextMenuExtension.cs" />
+    <Compile Include="Extensions2\BorderForImageControl.cs" />
+    <Compile Include="Extensions2\BorderForInvisibleControl.cs" />
+    <Compile Include="Extensions2\BorderForMouseOver.cs" />
+    <Compile Include="Extensions2\CanvasPlacementSupport.cs" />
+    <Compile Include="Extensions2\CanvasPositionExtension.cs" />
+    <Compile Include="Extensions2\DefaultCommandsContextMenu.xaml.cs">
+      <DependentUpon>DefaultCommandsContextMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions2\DefaultCommandsContextMenuExtension.cs" />
+    <Compile Include="Extensions2\DefaultPlacementBehavior.cs" />
+    <Compile Include="Extensions2\DrawLineExtension.cs" />
+    <Compile Include="Extensions2\DrawPathExtension.cs" />
+    <Compile Include="Extensions2\DrawPolyLineExtension.cs" />
+    <Compile Include="Extensions2\EditStyleContextMenu.xaml.cs">
+      <DependentUpon>EditStyleContextMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions2\EditStyleContextMenuExtension.cs" />
+    <Compile Include="Extensions2\GridAdornerProvider.cs" />
+    <Compile Include="Extensions2\GridPlacementSupport.cs" />
+    <Compile Include="Extensions2\Initializers.cs" />
+    <Compile Include="Extensions2\InPlaceEditorExtension.cs" />
+    <Compile Include="Extensions2\LineExtensionBase.cs" />
+    <Compile Include="Extensions2\LineHandlerExtension.cs" />
+    <Compile Include="Extensions2\MarginHandleExtension.cs" />
+    <Compile Include="Extensions2\OnlyDeletePlacementBehavior.cs" />
+    <Compile Include="Extensions2\PanelInstanceFactory.cs" />
+    <Compile Include="Extensions2\PanelMove.cs" />
+    <Compile Include="Extensions2\PanelSelectionHandler.cs" />
+    <Compile Include="Extensions2\PartialPanelSelectionHandler.cs" />
+    <Compile Include="Extensions2\PathContextMenu.xaml.cs">
+      <DependentUpon>PathContextMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions2\PathContextMenuExtension.cs" />
+    <Compile Include="Extensions2\PathHandlerExtension.cs" />
+    <Compile Include="Extensions2\PointTrackerPlacementSupport.cs" />
+    <Compile Include="Extensions2\PolyLineHandlerExtension.cs" />
+    <Compile Include="Extensions2\QuickOperationMenuExtension.cs" />
+    <Compile Include="Extensions2\RasterPlacementBehavior.cs" />
+    <Compile Include="Extensions2\RenderTransformOriginExtension.cs" />
+    <Compile Include="Extensions2\ResizeThumbExtension.cs" />
+    <Compile Include="Extensions2\RightClickContextMenu.xaml.cs">
+      <DependentUpon>RightClickContextMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions2\RightClickContextMenuExtension.cs" />
+    <Compile Include="Extensions2\RotateThumbExtension.cs" />
+    <Compile Include="Extensions2\SelectedElementRectangleExtension.cs" />
+    <Compile Include="Extensions2\SizeDisplayExtension.cs" />
+    <Compile Include="Extensions2\SkewThumbExtension.cs" />
+    <Compile Include="Extensions2\SnaplinePlacementBehavior.cs" />
+    <Compile Include="Extensions2\StackPanelPlacementSupport.cs" />
+    <Compile Include="Extensions2\TabItemClickableExtension.cs" />
+    <Compile Include="Extensions2\TextBlockRightClickContextMenu.xaml.cs">
+      <DependentUpon>TextBlockRightClickContextMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions2\TextBlockRightClickContextMenuExtension.cs" />
+    <Compile Include="Extensions2\TopLeftContainerDragHandle.cs" />
+    <Compile Include="Extensions2\TopLeftContainerDragHandleMultipleItems.cs" />
+    <Compile Include="Extensions2\UnwrapItemContextMenu.xaml.cs">
+      <DependentUpon>UnwrapItemContextMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions2\UnwrapItemContextMenuExtension.cs" />
+    <Compile Include="Extensions2\UserControlPointsObjectExtension.cs" />
+    <Compile Include="Extensions2\WrapItemContextMenu.xaml.cs">
+      <DependentUpon>WrapItemContextMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions2\WrapItemContextMenuExtension.cs" />
+    <Compile Include="Extensions2\WrapItemsContextMenu.xaml.cs">
+      <DependentUpon>WrapItemsContextMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions2\WrapItemsContextMenuExtension.cs" />
+    <Compile Include="Extensions\BehaviorExtension.cs" />
+    <Compile Include="Extensions\DefaultExtension.cs" />
+    <Compile Include="Extensions\DefaultExtensionServer.cs" />
+    <Compile Include="Extensions\LogicalExtensionServers.cs" />
+    <Compile Include="Extensions\MouseOverExtensionServer.cs" />
+    <Compile Include="Extensions\SelectionExtensionServers.cs" />
+    <Compile Include="FocusNavigator.cs" />
+    <Compile Include="InfoTextEnterArea.cs" />
+    <Compile Include="IRootPlacementBehavior.cs" />
+    <Compile Include="ITool.cs" />
+    <Compile Include="ModelTools.cs" />
+    <Compile Include="MouseInteraction.cs" />
+    <Compile Include="MyComponentPropertyService.cs" />
+    <Compile Include="MyComponentService.cs" />
+    <Compile Include="MyDesignItem.cs" />
+    <Compile Include="MyDesignContext.cs" />
+    <Compile Include="DesignerControls\CollapsiblePanel.cs" />
+    <Compile Include="DesignContext.cs" />
+    <Compile Include="DesignerException.cs" />
+    <Compile Include="DesignItem.cs" />
+    <Compile Include="DesignItemProperty.cs" />
+    <Compile Include="DesignPanel.cs" />
+    <Compile Include="DesignPanelHitTestResult.cs" />
+    <Compile Include="DragListener.cs" />
+    <Compile Include="Entities\ParameterMapping.cs" />
+    <Compile Include="EnumButton.cs" />
+    <Compile Include="EventArgs.cs" />
+    <Compile Include="Extensions\CustomInstanceFactory.cs" />
+    <Compile Include="Extensions\DefaultInitializer.cs" />
+    <Compile Include="Extensions\DesignItemInitializer.cs" />
+    <Compile Include="Extensions\Extension.cs" />
+    <Compile Include="Extensions\ExtensionAttribute.cs" />
+    <Compile Include="Extensions\ExtensionForAttribute.cs" />
+    <Compile Include="Extensions\ExtensionInterfaces.cs" />
+    <Compile Include="Extensions\ExtensionManager.cs" />
+    <Compile Include="Extensions\ExtensionServer.cs" />
+    <Compile Include="Extensions\ExtensionServerAttribute.cs" />
+    <Compile Include="Extensions\NeverApplyExtensionsExtensionServer.cs" />
+    <Compile Include="Helpers\DragFileToDesignPanelHelper.cs" />
+    <Compile Include="HitTestType.cs" />
+    <Compile Include="IDesignPanel.cs" />
+    <Compile Include="IObservableList.cs" />
+    <Compile Include="Metadata.cs" />
+    <Compile Include="DesignerControls\NumericUpDown.cs" />
+    <Compile Include="NumberRange.cs" />
+    <Compile Include="OutlineView\DragListener.cs" />
+    <Compile Include="OutlineView\DragTreeView.cs" />
+    <Compile Include="OutlineView\DragTreeViewItem.cs" />
+    <Compile Include="OutlineView\IconItem.cs" />
+    <Compile Include="OutlineView\IOutlineNode.cs" />
+    <Compile Include="OutlineView\Outline.xaml.cs">
+      <DependentUpon>Outline.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OutlineView\OutlineNode.cs" />
+    <Compile Include="OutlineView\OutlineNodeBase.cs" />
+    <Compile Include="OutlineView\OutlineNodeNameService.cs" />
+    <Compile Include="OutlineView\OutlineTreeView.cs" />
+    <Compile Include="OutlineView\PropertyOutlineNode.cs" />
+    <Compile Include="PageShell.cs" />
+    <Compile Include="Attached\AdaptiveAttached.cs" />
+    <Compile Include="Attached\DataFieldsAttached.cs" />
+    <Compile Include="Attached\JsonAttached.cs" />
+    <Compile Include="Attached\ParameterMappingAttached.cs" />
+    <Compile Include="Attached\StaticProperties.cs" />
+    <Compile Include="BaseClass\DataFieldsBase.cs" />
+    <Compile Include="BaseClass\SampleBase.cs" />
+    <Compile Include="BaseClass\WidgetBase.cs" />
+    <Compile Include="ControlAdorner.cs" />
+    <Compile Include="DataFields\ChildPageDataFields.cs" />
+    <Compile Include="DataFields\RegionGridDataFields.cs" />
+    <Compile Include="BaseClass\WidgetCanvasBase.cs" />
+    <Compile Include="DesignSurface.cs" />
+    <Compile Include="Entities\LayerNode.cs" />
+    <Compile Include="Entities\RootNode.cs" />
+    <Compile Include="Entities\UnitNode.cs" />
+    <Compile Include="Entities\WidgetItem.cs" />
+    <Compile Include="Helpers\ResourceHelper.cs" />
+    <Compile Include="Helpers\WidgetPropertyHelper.cs" />
+    <Compile Include="JsonConverters\BaseJsonConverter.cs" />
+    <Compile Include="JsonConverters\UnitNoteJsonConverter.cs" />
+    <Compile Include="PanelMoveAdorner.cs" />
+    <Compile Include="ParameterMediator.cs" />
+    <Compile Include="PlacementAlignment.cs" />
+    <Compile Include="IPlacementBehavior.cs" />
+    <Compile Include="PlacementInformation.cs" />
+    <Compile Include="PlacementOperation.cs" />
+    <Compile Include="PlacementType.cs" />
+    <Compile Include="RootItemBehavior.cs" />
+    <Compile Include="ServiceContainer.cs" />
+    <Compile Include="ServiceRequiredException.cs" />
+    <Compile Include="Services.cs" />
+    <Compile Include="Services\ClickOrDragMouseGesture.cs" />
+    <Compile Include="Services\CreateComponentMouseGesture.cs" />
+    <Compile Include="Services\CreateComponentTool.cs" />
+    <Compile Include="Services\DesignerKeyBindings.cs" />
+    <Compile Include="Services\DragMoveMouseGesture.cs" />
+    <Compile Include="Services\MouseGestureBase.cs" />
+    <Compile Include="Services\MoveLogic.cs" />
+    <Compile Include="Services\OptionService.cs" />
+    <Compile Include="Services\PointerTool.cs" />
+    <Compile Include="Services\SelectionService.cs" />
+    <Compile Include="Services\ToolService.cs" />
+    <Compile Include="Services\UndoService.cs" />
+    <Compile Include="Services\ViewService.cs" />
+    <Compile Include="SharedInstances.cs" />
+    <Compile Include="StretchDirection.cs" />
+    <Compile Include="Themes\VersionedAssemblyResourceDictionary.cs" />
+    <Compile Include="Thumbs\DesignerThumb.cs" />
+    <Compile Include="Thumbs\MultiPointThumb.cs" />
+    <Compile Include="Thumbs\PointThumb.cs" />
+    <Compile Include="Thumbs\ResizeThumb.cs" />
+    <Compile Include="Thumbs\RotateThumb.cs" />
+    <Compile Include="IToolService.cs" />
+    <Compile Include="Thumbs\UserControlPointsObjectThumb.cs" />
+    <Compile Include="Translations.cs" />
+    <Compile Include="UIExtensions\MouseHorizontalWheelEnabler.cs" />
+    <Compile Include="UIExtensions\MouseHorizontalWheelEventArgs.cs" />
+    <Compile Include="UIExtensions\UIHelpers.cs" />
+    <Compile Include="Units\LayerGrid.cs" />
+    <Compile Include="WidgetApi.cs" />
+    <Compile Include="PageApi.cs" />
+    <Compile Include="PropertyGrid\Editors\DatePropertyEditor.cs" />
+    <Compile Include="PropertyGrid\Editors\DateTimePropertyEditor.cs" />
+    <Compile Include="PropertyGrid\Editors\MultiDimensionPropertyEditor.cs" />
+    <Compile Include="PropertyGrid\Editors\DimensionPropertyEditor.cs" />
+    <Compile Include="PropertyGrid\Editors\EnumPropertyEditor.cs" />
+    <Compile Include="PropertyGrid\Editors\HorizontalAlignmentPropertyEditor.cs" />
+    <Compile Include="PropertyGrid\Editors\ImagePropertyEditor.cs" />
+    <Compile Include="PropertyGrid\Editors\NumberPropertyEditor.cs" />
+    <Compile Include="PropertyGrid\Editors\TextAreaPropertyEditor.cs" />
+    <Compile Include="PropertyGrid\Editors\PlainTextPropertyEditor.cs" />
+    <Compile Include="PropertyGrid\Editors\PropertyEditorBase.cs" />
+    <Compile Include="PropertyGrid\Editors\ReadOnlyTextPropertyEditor.cs" />
+    <Compile Include="PropertyGrid\Editors\SwitchPropertyEditor.cs" />
+    <Compile Include="PropertyGrid\Editors\ThicknessPropertyEditor.cs" />
+    <Compile Include="PropertyGrid\Editors\TimePropertyEditor.cs" />
+    <Compile Include="PropertyGrid\Editors\VerticalAlignmentPropertyEditor.cs" />
+    <Compile Include="PropertyGrid\PropertyGrid.cs" />
+    <Compile Include="PropertyGrid\PropertyItem.cs" />
+    <Compile Include="PropertyGrid\PropertyItemsControl.cs" />
+    <Compile Include="PropertyGrid\PropertyResolver.cs" />
+    <Compile Include="Proxy\WidgetProxy.cs" />
+    <Compile Include="Units\RegionGrid.cs" />
+    <Compile Include="Units\LayerCanvas.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Units\RootCanvas.cs" />
+    <Compile Include="ViewModels\ChildPageViewModel.cs" />
+    <Compile Include="Views\ChildPage.xaml.cs">
+      <DependentUpon>ChildPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyModelProperty.cs" />
+    <Compile Include="MyModelPropertyCollection.cs" />
+    <Compile Include="MyModelCollectionElementsCollection.cs" />
+    <Compile Include="XamlDom\DesignTimeProperties.cs" />
+    <Compile Include="MyLoadSettings.cs" />
+    <Compile Include="ZoomBox.cs" />
+    <Compile Include="ZoomButtons.cs" />
+    <Compile Include="ZoomControl.cs" />
+    <Compile Include="ZoomScrollViewer.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Hjmos.Lcdp\Hjmos.Lcdp.csproj">
+      <Project>{6F77C766-9DEB-4C9D-BFC6-2077D2A9B5B0}</Project>
+      <Name>Hjmos.Lcdp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EditorManagement\Hjmos.Lcdp.EditorManagement.Common\Hjmos.Lcdp.EditorManagement.Common.csproj">
+      <Project>{01423E2C-F25A-4EFC-A86A-FA46D0E23F4C}</Project>
+      <Name>Hjmos.Lcdp.EditorManagement.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Managers\Hjmos.Lcdp.ILoger\Hjmos.Lcdp.ILoger.csproj">
+      <Project>{E8677E08-55D8-4308-A645-5A968DFE2065}</Project>
+      <Name>Hjmos.Lcdp.ILoger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VisualEditorServer\Hjmos.Lcdp.VisualEditorServer.Entities\Hjmos.Lcdp.VisualEditorServer.Entities.csproj">
+      <Project>{8FAD9501-3080-41EA-8C1F-D841780666B1}</Project>
+      <Name>Hjmos.Lcdp.VisualEditorServer.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditor.Assets\Hjmos.Lcdp.VisualEditor.Assets.csproj">
+      <Project>{ae85c16f-2786-4948-820a-57ccb793169a}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.Assets</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditor.Core\Hjmos.Lcdp.VisualEditor.Core.csproj">
+      <Project>{7C932091-ED1F-42D3-AAB1-5249D8963339}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditor.Models\Hjmos.Lcdp.VisualEditor.Models.csproj">
+      <Project>{DD6B19E1-092F-4C66-B0F9-BDE34E10C506}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditor.Service\Hjmos.Lcdp.VisualEditor.Service.csproj">
+      <Project>{6B4F1C78-F541-4265-8EAC-365978497655}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Themes\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Themes\Styles\PropertyGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Page Include="DesignerControls\CollapsiblePanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DesignerControls\ControlStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DesignerControls\GridUnitSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DesignerControls\NumericUpDown.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DesignerPropertyGrid\Editors\CollectionEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DesignerPropertyGrid\Editors\CollectionTemplateDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DesignerPropertyGrid\Editors\FormatedTextEditor\FormatedTextEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DesignerPropertyGrid\Editors\FormatedTextEditor\RichTextBoxToolbar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DesignerPropertyGrid\FlatCollectionEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DesignerPropertyGrid\PropertyContextMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DesignerPropertyGrid\PropertyGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extensions2\ArrangeItemsContextMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extensions2\DefaultCommandsContextMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extensions2\EditStyleContextMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extensions2\PathContextMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extensions2\RightClickContextMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extensions2\TextBlockRightClickContextMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extensions2\UnwrapItemContextMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extensions2\WrapItemContextMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Extensions2\WrapItemsContextMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OutlineView\Outline.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OutlineView\OutlineView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Styles\ZoomBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ChildPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CefSharp.Wpf">
+      <Version>92.0.260</Version>
+    </PackageReference>
+    <PackageReference Include="HandyControl">
+      <Version>3.2.0</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Unity">
+      <Version>8.1.97</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\PanToolCursor.cur" />
+    <Resource Include="Images\PanToolCursorMouseDown.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons.16x16.CopyIcon.png" />
+    <Resource Include="Images\Icons.16x16.CutIcon.png" />
+    <Resource Include="Images\Icons.16x16.DeleteIcon.png" />
+    <Resource Include="Images\Icons.16x16.PasteIcon.png" />
+    <Resource Include="Images\Icons.16x16.RedoIcon.png" />
+    <Resource Include="Images\Icons.16x16.UndoIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\rotate.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\wrap-option.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons.16x16.GridSnap.png" />
+    <Resource Include="Images\Icons.16x16.GuideSnap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ZoomIn.png" />
+    <Resource Include="Images\ZoomOut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons.32x32.EmptyProjectIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons.16x16.Properties.Categorized.png" />
+    <Resource Include="Images\Icons.16x16.Properties.Events.png" />
+    <Resource Include="Images\Icons.16x16.Properties.Properties.png" />
+    <Resource Include="Images\Icons.16x16.Properties.SortAlphabet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\layers-alignment-bottom.png" />
+    <Resource Include="Images\layers-alignment-center.png" />
+    <Resource Include="Images\layers-alignment-left.png" />
+    <Resource Include="Images\layers-alignment-middle.png" />
+    <Resource Include="Images\layers-alignment-right.png" />
+    <Resource Include="Images\layers-alignment.png" />
+    <Resource Include="Images\layers-arrange-back.png" />
+    <Resource Include="Images\layers-arrange.png" />
+    <Resource Include="Images\layers-stack-arrange-back.png" />
+    <Resource Include="Images\layers-stack-arrange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\edit-bold.png" />
+    <Resource Include="Images\edit-color.png" />
+    <Resource Include="Images\edit-italic.png" />
+    <Resource Include="Images\edit-strike.png" />
+    <Resource Include="Images\edit-underline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\canvas.png" />
+    <Resource Include="Images\Class.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\grid.png" />
+    <Resource Include="Images\group2.png" />
+    <Resource Include="Images\Icons.16x16.WpfOutline.Eye.png" />
+    <Resource Include="Images\Icons.16x16.WpfOutline.EyeClose.png" />
+    <Resource Include="Images\lock.png" />
+    <Resource Include="Images\paint-can-color.png" />
+    <Resource Include="Images\Tag.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,17 @@
+{
+  "Series": [
+    {
+      "Title": "Series 1",
+      "Values": [ 4, 6, 5, 2, 7 ]
+    },
+    {
+      "Title": "Series 2",
+      "Values": [ 6, 7, 3, 4, 6 ]
+    },
+    {
+      "Values": [ 5, 3, 2, 4, 5 ],
+      "LineSmoothness": 0
+    }
+  ],
+  "Labels": [ "Jan", "Feb", "Mar", "Apr", "May" ]
+}

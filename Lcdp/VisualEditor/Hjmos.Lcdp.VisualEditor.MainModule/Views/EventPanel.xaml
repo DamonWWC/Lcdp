@@ -1,0 +1,17 @@
+﻿<UserControl
+    x:Class="Hjmos.Lcdp.VisualEditor.MainModule.Views.EventPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <!-- 事件面板 -->
+    <Grid x:Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button Width="120" Height="42" Margin="5" Click="Button_Click">添加事件</Button>
+            <Button Width="120" Height="42" Margin="5" Command="{Binding LoadedCommand}">Loaded</Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

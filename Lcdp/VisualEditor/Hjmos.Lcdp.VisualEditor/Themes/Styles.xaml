@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Hjmos.Lcdp.VisualEditor;component/Themes/Styles/BaseResources.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Hjmos.Lcdp.VisualEditor;component/Themes/Styles/ComboBoxStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Hjmos.Lcdp.VisualEditor;component/Themes/Styles/PropertyGrid.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Hjmos.Lcdp.VisualEditor;component/Themes/Styles/ZoomBox.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

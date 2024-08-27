@@ -1,0 +1,13 @@
+﻿<u:SampleBase x:Class="Hjmos.Lcdp.Plugins.DemoControl.Views.Samples.DefaultSample"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:u="clr-namespace:Hjmos.Lcdp.VisualEditor.Core.BaseClass;assembly=Hjmos.Lcdp.VisualEditor.Core"
+              xmlns:prism="http://prismlibrary.com/"             
+              prism:ViewModelLocator.AutoWireViewModel="True">
+    <UserControl.Resources>
+        <FontFamily x:Key="iconFamily">pack://application:,,,/Hjmos.Lcdp.VisualEditor.Assets;component/Fonts/#EditorIcon</FontFamily>
+    </UserControl.Resources>
+    <Border Margin="10" BorderThickness="2" BorderBrush="#DDD" Background="White">
+        <TextBlock Text="&#xe66f;" FontFamily="{StaticResource MgtIcon}" FontSize="30" Foreground="#DDD" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+    </Border>
+</u:SampleBase>

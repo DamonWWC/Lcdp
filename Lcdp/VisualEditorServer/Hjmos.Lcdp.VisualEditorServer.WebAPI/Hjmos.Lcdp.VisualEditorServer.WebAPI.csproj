@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
+    <DocumentationFile>C:\Users\EmMoxx\Documents\EM\Project\Hjmos.Lcdp\VisualEditorServer\Hjmos.Lcdp.VisualEditorServer.WebAPI\Hjmos.Lcdp.VisualEditorServer.WebAPI.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.10" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditorServer.Common\Hjmos.Lcdp.VisualEditorServer.Common.csproj" />
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditorServer.ICommon\Hjmos.Lcdp.VisualEditorServer.ICommon.csproj" />
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditorServer.IService\Hjmos.Lcdp.VisualEditorServer.IService.csproj" />
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditorServer.Service\Hjmos.Lcdp.VisualEditorServer.Service.csproj" />
+  </ItemGroup>
+
+</Project>

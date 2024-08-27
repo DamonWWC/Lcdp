@@ -1,0 +1,9 @@
+﻿<u:WidgetBase x:Class="Hjmos.Lcdp.VisualEditor.Controls.Views.ChildPage"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:prism="http://prismlibrary.com/"
+              xmlns:u="clr-namespace:Hjmos.Lcdp.VisualEditor.Controls.BaseClass"
+              xmlns:c="clr-namespace:Hjmos.Lcdp.VisualEditor.Controls"
+              prism:ViewModelLocator.AutoWireViewModel="True">
+    <c:PageShell x:Name="root" PageGuid="{Binding PageGuid}" />
+</u:WidgetBase>

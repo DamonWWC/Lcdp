@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6B4F1C78-F541-4265-8EAC-365978497655}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hjmos.Lcdp.VisualEditor.Service</RootNamespace>
+    <AssemblyName>Hjmos.Lcdp.VisualEditor.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\output\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Apis\ILoginApi.cs" />
+    <Compile Include="Apis\IModuleApi.cs" />
+    <Compile Include="Apis\IPageApi.cs" />
+    <Compile Include="Apis\IWidgetApi.cs" />
+    <Compile Include="LoginService.cs" />
+    <Compile Include="ModuleService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PageService.cs" />
+    <Compile Include="RestConfig.cs" />
+    <Compile Include="WidgetService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Hjmos.Lcdp\Hjmos.Lcdp.csproj">
+      <Project>{491A73CF-71AE-4542-99BD-D763FE61B761}</Project>
+      <Name>Hjmos.Lcdp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Managers\Hjmos.Lcdp.Loger\Hjmos.Lcdp.Loger.csproj">
+      <Project>{f86dab80-fce8-4c6e-ac95-587920345e5c}</Project>
+      <Name>Hjmos.Lcdp.Loger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VisualEditorServer\Hjmos.Lcdp.VisualEditorServer.Entities\Hjmos.Lcdp.VisualEditorServer.Entities.csproj">
+      <Project>{8fad9501-3080-41ea-8c1f-d841780666b1}</Project>
+      <Name>Hjmos.Lcdp.VisualEditorServer.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditor.IService\Hjmos.Lcdp.VisualEditor.IService.csproj">
+      <Project>{F6B148BE-0E1F-488C-9335-21EB4824D322}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.IService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditor.Models\Hjmos.Lcdp.VisualEditor.Models.csproj">
+      <Project>{DD6B19E1-092F-4C66-B0F9-BDE34E10C506}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Refit">
+      <Version>6.3.2</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,25 @@
+{
+  "totalCount": "156",
+  "alarmList": [
+    {
+      "name": "朝阳村",
+      "amount": 50
+    },
+    {
+      "name": "象鼻窝",
+      "amount": 42
+    },
+    {
+      "name": "和馨园",
+      "amount": 36
+    },
+    {
+      "name": "湘雅三医院",
+      "amount": 21
+    },
+    {
+      "name": "六沟垅",
+      "amount": 7
+    }
+  ]
+}

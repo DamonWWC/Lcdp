@@ -1,0 +1,119 @@
+﻿<UserControl
+    x:Class="Hjmos.Lcdp.VisualEditor.MainModule.Views.ToolbarView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <StackPanel>
+        <!-- 新样式工具栏 -->
+        <Grid Background="#05050A">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                <ToggleButton Width="48" Height="32" Margin="24,8,8,8" IsChecked="{Binding Path=State.DesignPanel.UseRasterPlacement, Mode=TwoWay}">
+                    <ToggleButton.Template>
+                        <ControlTemplate TargetType="ToggleButton">
+                            <Border x:Name="border" Background="#3C3C3C" BorderThickness="0">
+                                <Image Width="16" Height="16" Source="pack://application:,,,/Hjmos.Lcdp.VisualEditor.Assets;component/Images/Toolbar/网格.png" Stretch="Fill" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#00BAC0" />
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#00BAC0" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </ToggleButton.Template>
+                </ToggleButton>
+                <ToggleButton Width="48" Height="32" Margin="8,8" IsChecked="{Binding Path=State.DesignPanel.UseSnaplinePlacement, Mode=TwoWay}">
+                    <ToggleButton.Template>
+                        <ControlTemplate TargetType="ToggleButton">
+                            <Border x:Name="border" Background="#3C3C3C" BorderThickness="0">
+                                <Image Width="16" Height="16" Source="pack://application:,,,/Hjmos.Lcdp.VisualEditor.Assets;component/Images/Toolbar/吸附.png" Stretch="Fill" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#00BAC0" />
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#00BAC0" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </ToggleButton.Template>
+                </ToggleButton>
+                <StackPanel Height="32" Background="#3C3C3C" Orientation="Horizontal">
+                    <Border
+                        Width="20" Height="20" Margin="10,0" Background="#7D7D7D" BorderThickness="0" CornerRadius="50">
+                        <Image Width="10" Height="2" Source="pack://application:,,,/Hjmos.Lcdp.VisualEditor.Assets;component/Images/Toolbar/减少.png" Stretch="Fill" />
+                    </Border>
+                    <TextBlock Margin="10,0" VerticalAlignment="Center" Foreground="White">100%</TextBlock>
+                    <Border
+                        Width="20" Height="20" Margin="10,0" Background="#7D7D7D" BorderThickness="0" CornerRadius="50">
+                        <Image Width="10" Height="10" Source="pack://application:,,,/Hjmos.Lcdp.VisualEditor.Assets;component/Images/Toolbar/增加.png" Stretch="Fill" />
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                <StackPanel Height="32" Background="#3C3C3C" Orientation="Horizontal">
+                    <Border Width="20" Height="20" Margin="10,0">
+                        <Image Width="16" Height="16" Source="pack://application:,,,/Hjmos.Lcdp.VisualEditor.Assets;component/Images/Toolbar/顶部对齐.png" Stretch="Fill" />
+                    </Border>
+                    <Border Width="20" Height="20" Margin="10,0">
+                        <Image Width="16" Height="16" Source="pack://application:,,,/Hjmos.Lcdp.VisualEditor.Assets;component/Images/Toolbar/置于底部.png" Stretch="Fill" />
+                    </Border>
+                </StackPanel>
+
+
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                    <Button Width="48" Height="32" Margin="24,8,8,8" Command="{Binding PreviewPageCommand}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="border" Background="#3C3C3C" BorderThickness="0">
+                                    <Image Width="16" Height="16" Source="pack://application:,,,/Hjmos.Lcdp.VisualEditor.Assets;component/Images/Toolbar/预览.png" Stretch="Fill" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#00BAC0" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Width="48" Height="32" Margin="8,8" Command="{Binding SavePageCommand}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="border" Background="#3C3C3C" BorderThickness="0">
+                                    <Image Width="16" Height="16" Source="pack://application:,,,/Hjmos.Lcdp.VisualEditor.Assets;component/Images/Toolbar/保存.png" Stretch="Fill" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#00BAC0" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button Width="48" Height="32" Margin="8,8" Command="{Binding LoadPageCommand}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="border" Background="#3C3C3C" BorderThickness="0">
+                                    <Image Width="16" Height="16" Source="pack://application:,,,/Hjmos.Lcdp.VisualEditor.Assets;component/Images/Toolbar/加载页面.png" Stretch="Fill" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#00BAC0" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,115 @@
+﻿<UserControl x:Class="Hjmos.Lcdp.Plugins.NccControls.Views.EventHandling.MessageBoxView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:Hjmos.Ncc.Resource.Controls;assembly=Hjmos.Ncc.Resource"
+             xmlns:prism="http://prismlibrary.com/" prism:ViewModelLocator.AutoWireViewModel="True">
+    <UserControl.Background>
+        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStop Offset="0" Color="#FF0B2F4C" />
+            <GradientStop Offset="1" Color="#E6093951" />
+        </LinearGradientBrush>
+    </UserControl.Background>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Hjmos.Ncc.Resource;component/Styles/FontIcon.xaml" />
+                <ResourceDictionary Source="/Hjmos.Ncc.Resource;component/Styles/CustomDialogWindow.xaml" />
+                <ResourceDictionary>
+                    <!-- 操作按钮样式 -->
+                    <Style x:Key="OperationStyle" TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF0A3755" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="BorderBrush" Value="#FF17557F" />
+                        <Setter Property="BorderThickness" Value="1" />
+                        <Setter Property="FontSize" Value="14" />
+                        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ContentPresenter Name="contentPresenter"
+                                                          Margin="{TemplateBinding Padding}"
+                                                          HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                          Content="{TemplateBinding Content}"
+                                                          Focusable="false" RecognizesAccessKey="true" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#FF0196A3" />
+                                        </Trigger>
+                                        <Trigger Property="IsFocused" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#FF0196A3" />
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#FF0196A3" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <prism:Dialog.WindowStyle>
+        <Style TargetType="controls:CustomDialogWindow">
+            <Setter Property="prism:Dialog.WindowStartupLocation" Value="CenterScreen" />
+            <Setter Property="ResizeMode" Value="NoResize" />
+            <Setter Property="ShowInTaskbar" Value="True" />
+            <Setter Property="SizeToContent" Value="Manual" />
+            <Setter Property="Width" Value="424" />
+            <Setter Property="Height" Value="192" />
+            <Setter Property="WindowState" Value="Normal" />
+            <Setter Property="ContentMargin" Value="0" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="WindowChrome.WindowChrome" Value="{x:Null}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Offset="0" Color="#FF17557F" />
+                        <GradientStop Offset="1" Color="#FF124C69" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template" Value="{StaticResource NoTitleDialogStyle}" />
+        </Style>
+    </prism:Dialog.WindowStyle>
+    <!-- 信息提示框 -->
+    <Grid FocusManager.FocusedElement="{Binding ElementName=btnConfirm}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Border Width="24" Height="24" Margin="32,32,0,0" Background="#FFF8E71C" CornerRadius="12">
+            <TextBlock FontSize="14" Foreground="#FF000000" Style="{StaticResource FontIcon}" Text="&#xe76f;" />
+        </Border>
+        <!-- 提示标题 -->
+        <TextBlock Grid.Column="1" Margin="16,32,32,0" VerticalAlignment="Center" FontSize="16" FontWeight="Medium"
+                   Foreground="#FFFFFFFF"
+                   Text="{Binding Content}" />
+        <!-- 提示Tips -->
+        <TextBlock Grid.Row="1" Grid.Column="1" Margin="16,12,32,0" FontSize="14" Foreground="#FFFFFFFF"
+                   Text="{Binding Tips}"
+                   TextWrapping="Wrap" />
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="16,24,24,24" HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+            <Button x:Name="btnConfirm" Width="65" Height="32"
+                    Command="{Binding ConfirmCommand}"
+                    Content="确 定" IsDefault="True"
+                    Style="{StaticResource OperationStyle}"
+                    Visibility="{Binding OKVisibility}" />
+            <Button Width="65" Height="32" Margin="8,0,0,0"
+                    Command="{Binding CancelCommand}"
+                    Content="取 消"
+                    Style="{StaticResource OperationStyle}"
+                    Visibility="{Binding CancelVisibility}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

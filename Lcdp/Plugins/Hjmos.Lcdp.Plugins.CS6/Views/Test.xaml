@@ -1,0 +1,18 @@
+﻿<u:WidgetBase
+    x:Class="Hjmos.Lcdp.Plugins.CS6.Views.Test"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:effects="http://gu.se/Geometry"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="clr-namespace:Hjmos.Lcdp.VisualEditor.Core.BaseClass;assembly=Hjmos.Lcdp.VisualEditor.Core"
+    d:DesignHeight="400" d:DesignWidth="400" prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+    <Ellipse Stroke="White" StrokeThickness="30">
+        <Ellipse.Effect>
+            <effects:AngularGradientEffect
+                CenterPoint="0.5 0.5" CentralAngle="50" EndColor="Transparent" StartAngle="0" StartColor="Blue" />
+        </Ellipse.Effect>
+    </Ellipse>
+</u:WidgetBase>

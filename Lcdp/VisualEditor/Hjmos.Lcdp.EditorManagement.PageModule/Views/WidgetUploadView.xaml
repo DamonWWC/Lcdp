@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="Hjmos.Lcdp.EditorManagement.PageModule.Views.WidgetUploadView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal" Margin="5,10">
+            <hc:SearchBar Name="SearchBarCustomVerify" Width="300" Margin="5,5" ShowClearButton="True" Style="{StaticResource SearchBarPlus}"/>
+            <Button Content="上传" Style="{StaticResource ButtonPrimary}" Width="70" Height="30" Margin="5,0" Command="{Binding UploadCommand}"/>
+        </StackPanel>
+
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Border Background="#F7F9FA"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="序号" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Text="名称" VerticalAlignment="Center" Grid.Column="1"/>
+                <TextBlock Text="上传时间" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2"/>
+                <TextBlock Text="操作" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3"/>
+            </Grid>
+            <ItemsControl ItemsSource="{Binding Libs}" Grid.Row="1">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Height="35" Name="root" Background="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Index}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Grid.Column="1"/>
+                            <TextBlock Text="{Binding UploadTime}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" />
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3">
+                                <Hyperlink Command="{Binding ConfigCommand}" CommandParameter="{Binding}">明细</Hyperlink>
+                                <Hyperlink Command="{Binding HideCommand}" CommandParameter="{Binding}">隐藏</Hyperlink>
+                                <Hyperlink Command="{Binding DeleteCommand}" CommandParameter="{Binding}">删除</Hyperlink>
+                            </TextBlock>
+                        </Grid>
+                        <DataTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#F7F9FA" TargetName="root"/>
+                            </Trigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+    </Grid>
+</UserControl>

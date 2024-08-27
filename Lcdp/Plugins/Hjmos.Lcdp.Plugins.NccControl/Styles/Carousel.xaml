@@ -1,0 +1,147 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:hj="clr-namespace:Hjmos.BaseControls.Controls;assembly=Hjmos.BaseControls"
+    xmlns:interactivity="clr-namespace:Hjmos.BaseControls.Interactivity;assembly=Hjmos.BaseControls"
+    xmlns:ncc="clr-namespace:Hjmos.Lcdp.Plugins.NccControl.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Hjmos.BaseControls;component/Themes/Styles/Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Hjmos.BaseControls;component/Themes/Basic/Geometries.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Hjmos.BaseControls;component/Themes/Basic/Paths.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Hjmos.BaseControls;component/Themes/Styles/Base/BaseStyle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+    <Style x:Key="CarouselItemBaseStyle" TargetType="hj:CarouselItem">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="hj:CarouselItem">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter Margin="{TemplateBinding Padding}" ContentTemplate="{Binding ItemTemplate, RelativeSource={RelativeSource AncestorType=ncc:Carousel1}}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CarouselPateButton" BasedOn="{StaticResource BaseStyle}" TargetType="RadioButton">
+        <Setter Property="Margin" Value="5,0" />
+        <Setter Property="Width" Value="10" />
+        <Setter Property="Height" Value="10" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5"
+                        SnapsToDevicePixels="true" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value=".9" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Opacity" Value=".6" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource PrimaryBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="ncc:Carousel1">
+        <Setter Property="PageButtonStyle" Value="{StaticResource CarouselPateButton}" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource CarouselItemBaseStyle}" />
+        <Setter Property="Width" Value="100px"></Setter>
+        <Setter Property="Height" Value="200px"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ncc:Carousel1">
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="FrameworkElement.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="GridTop"
+                                        Storyboard.TargetProperty="Opacity"
+                                        To="1"
+                                        Duration="0:0:.1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="FrameworkElement.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="GridTop"
+                                        Storyboard.TargetProperty="Opacity"
+                                        To="0"
+                                        Duration="0:0:.1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                    <hj:SimplePanel Background="{TemplateBinding Background}" ClipToBounds="True">
+                        <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Content="{TemplateBinding NoDataContent}"
+                            ContentTemplate="{TemplateBinding NoDataTemplate}" />
+                        <StackPanel x:Name="PART_Panel" Orientation="Horizontal" />
+                        <hj:SimplePanel
+                            x:Name="GridTop"
+                            Opacity="0"
+                            Visibility="{Binding IsShowButton, Converter={StaticResource Boolean2VisibilityConverter}, RelativeSource={RelativeSource TemplatedParent}}">
+                            <Button
+                                Margin="20,0,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Command="interactivity:ControlCommands.Prev"
+                                Style="{StaticResource ButtonCustom}">
+                                <Border
+                                    Width="12"
+                                    Height="12"
+                                    Background="Transparent"
+                                    CornerRadius="4">
+                                    <Path Fill="#FFD8D8D8" Style="{StaticResource LeftPathStyle}" />
+                                </Border>
+                            </Button>
+                            <Button
+                                Margin="0,0,20,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Command="interactivity:ControlCommands.Next"
+                                Style="{StaticResource ButtonCustom}">
+                                <Border
+                                    Width="12"
+                                    Height="12"
+                                    Background="Transparent"
+                                    CornerRadius="4">
+                                    <Path Fill="#FFD8D8D8" Style="{StaticResource RightPathStyle}" />
+                                </Border>
+                            </Button>
+                        </hj:SimplePanel>
+                        <StackPanel
+                            Name="PART_PanelPage"
+                            Margin="0,0,0,20"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Orientation="Horizontal"
+                            Visibility="Collapsed" />
+                    </hj:SimplePanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

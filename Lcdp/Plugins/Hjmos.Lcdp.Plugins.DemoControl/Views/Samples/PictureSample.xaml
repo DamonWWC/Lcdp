@@ -1,0 +1,10 @@
+﻿<u:SampleBase x:Class="Hjmos.Lcdp.Plugins.DemoControl.Views.Samples.PictureSample"
+              xmlns:u="clr-namespace:Hjmos.Lcdp.VisualEditor.Core.BaseClass;assembly=Hjmos.Lcdp.VisualEditor.Core"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:prism="http://prismlibrary.com/"             
+              prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <Image x:Name="pic" Stretch="Fill" />
+    </Grid>
+</u:SampleBase>

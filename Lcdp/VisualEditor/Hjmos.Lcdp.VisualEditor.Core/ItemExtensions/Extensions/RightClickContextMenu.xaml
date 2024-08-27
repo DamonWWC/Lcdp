@@ -1,0 +1,22 @@
+﻿<ContextMenu x:Class="Hjmos.Lcdp.VisualEditor.Core.ItemExtensions.RightClickContextMenu" xmlns="http://schemas.microsoft.com/netfx/2007/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Translation="clr-namespace:Hjmos.Lcdp.VisualEditor.Core">
+    <MenuItem Click="Click_BringToFront" Header="{Binding SendToFrontText, Source={x:Static Translation:Translations.Instance}}">
+        <MenuItem.Icon>
+            <Image Source="/Hjmos.Lcdp.VisualEditor.Assets;component/Images/layers-stack-arrange.png" />
+        </MenuItem.Icon>
+    </MenuItem>
+    <MenuItem Click="Click_Forward" Header="{Binding SendForward, Source={x:Static Translation:Translations.Instance}}">
+        <MenuItem.Icon>
+            <Image Source="/Hjmos.Lcdp.VisualEditor.Assets;component/Images/layers-arrange.png" />
+        </MenuItem.Icon>
+    </MenuItem>
+    <MenuItem Click="Click_Backward" Header="{Binding SendBackward, Source={x:Static Translation:Translations.Instance}}">
+        <MenuItem.Icon>
+            <Image Source="/Hjmos.Lcdp.VisualEditor.Assets;component/Images/layers-arrange-back.png" />
+        </MenuItem.Icon>
+    </MenuItem>
+    <MenuItem Click="Click_SendToBack" Header="{Binding SendToBack, Source={x:Static Translation:Translations.Instance}}">
+        <MenuItem.Icon>
+            <Image Source="/Hjmos.Lcdp.VisualEditor.Assets;component/Images/layers-stack-arrange-back.png" />
+        </MenuItem.Icon>
+    </MenuItem>
+</ContextMenu>

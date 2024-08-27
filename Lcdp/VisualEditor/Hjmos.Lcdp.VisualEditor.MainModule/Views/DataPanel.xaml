@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="Hjmos.Lcdp.VisualEditor.MainModule.Views.DataPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:attached="clr-namespace:Hjmos.Lcdp.VisualEditor.Core.Attached;assembly=Hjmos.Lcdp.VisualEditor.Core"
+             xmlns:core="clr-namespace:Hjmos.Lcdp.VisualEditor.Core;assembly=Hjmos.Lcdp.VisualEditor.Core"
+             xmlns:prism="http://prismlibrary.com/" prism:ViewModelLocator.AutoWireViewModel="True">
+    <!-- 数据面板 -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <!-- 面板绑定的对象：选中组件的附加属性DataFields的值 -->
+        <core:PropertyGrid SelectedObject="{Binding SelectedElement.(attached:DataFieldsAttached.DataFields)}" />
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button Width="120" Height="42" Margin="5" Command="{Binding ParameterSettingCommand}">参数设置</Button>
+            <Button Width="120" Height="42" Margin="5" Command="{Binding JsonCommand}">JSON</Button>
+        </StackPanel>
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button Width="120" Height="42" Margin="5" Command="{Binding DataSourceCommand}">数据源</Button>
+            <Button Width="120" Height="42" Margin="5" Command="{Binding SaveCommand}">保存</Button>
+        </StackPanel>
+        <StackPanel Grid.Row="3" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button Width="120" Height="42" Margin="5" Command="{Binding CustomXamlCommand}">Xaml</Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

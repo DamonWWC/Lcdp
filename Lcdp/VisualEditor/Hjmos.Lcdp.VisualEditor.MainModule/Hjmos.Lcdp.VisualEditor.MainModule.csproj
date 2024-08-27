@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6C7313AD-8948-48FD-8B9F-D69F41C9313E}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hjmos.Lcdp.VisualEditor.MainModule</RootNamespace>
+    <AssemblyName>Hjmos.Lcdp.VisualEditor.MainModule</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\output\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\HJMos_NCC_Client\Work\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\HJMos_NCC_Client\Work\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ViewModels\AddParameterDialogViewModel.cs" />
+    <Compile Include="ViewModels\ChildPageViewModel.cs" />
+    <Compile Include="ViewModels\CustomXamlDialogViewModel.cs" />
+    <Compile Include="ViewModels\DataPanelViewModel.cs" />
+    <Compile Include="ViewModels\EditorViewModel.cs" />
+    <Compile Include="ViewModels\EventPanelViewModel.cs" />
+    <Compile Include="ViewModels\LeftSideViewModel.cs" />
+    <Compile Include="ViewModels\LoadedCodeDialogViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ParameterSettingDialogViewModel.cs" />
+    <Compile Include="ViewModels\RightSideViewModel.cs" />
+    <Compile Include="ViewModels\SelectDataSourceDialogViewModel.cs" />
+    <Compile Include="ViewModels\StatusBarViewModel.cs" />
+    <Compile Include="ViewModels\ToolbarViewModel.cs" />
+    <Compile Include="ViewModels\WidgetParamterDialogViewModel.cs" />
+    <Compile Include="Views\AddParameterDialog.xaml.cs">
+      <DependentUpon>AddParameterDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChildPage.xaml.cs">
+      <DependentUpon>ChildPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CustomXamlDialog.xaml.cs">
+      <DependentUpon>CustomXamlDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataPanel.xaml.cs">
+      <DependentUpon>DataPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EventPanel.xaml.cs">
+      <DependentUpon>EventPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\JsonDataSourceDialog.xaml.cs">
+      <DependentUpon>JsonDataSourceDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LeftSideView.xaml.cs">
+      <DependentUpon>LeftSideView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoadedCodeDialog.xaml.cs">
+      <DependentUpon>LoadedCodeDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditorView.xaml.cs">
+      <DependentUpon>EditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ParameterSettingDialog.xaml.cs">
+      <DependentUpon>ParameterSettingDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RightSideView.xaml.cs">
+      <DependentUpon>RightSideView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SelectDataSourceDialog.xaml.cs">
+      <DependentUpon>SelectDataSourceDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatusBarView.xaml.cs">
+      <DependentUpon>StatusBarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolbarView.xaml.cs">
+      <DependentUpon>ToolbarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WidgetParamterDialog.xaml.cs">
+      <DependentUpon>WidgetParamterDialog.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\AddParameterDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ChildPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CustomXamlDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DataPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EventPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\JsonDataSourceDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LeftSideView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LoadedCodeDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EditorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ParameterSettingDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RightSideView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SelectDataSourceDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\StatusBarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ToolbarView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WidgetParamterDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CefSharp.Wpf">
+      <Version>99.2.140</Version>
+    </PackageReference>
+    <PackageReference Include="HandyControl">
+      <Version>3.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Wpf" Version="8.1.97" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Hjmos.Lcdp\Hjmos.Lcdp.csproj">
+      <Project>{491A73CF-71AE-4542-99BD-D763FE61B761}</Project>
+      <Name>Hjmos.Lcdp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Managers\Hjmos.Lcdp.ILoger\Hjmos.Lcdp.ILoger.csproj">
+      <Project>{e8677e08-55d8-4308-a645-5a968dfe2065}</Project>
+      <Name>Hjmos.Lcdp.ILoger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\VisualEditorServer\Hjmos.Lcdp.VisualEditorServer.Entities\Hjmos.Lcdp.VisualEditorServer.Entities.csproj">
+      <Project>{8fad9501-3080-41ea-8c1f-d841780666b1}</Project>
+      <Name>Hjmos.Lcdp.VisualEditorServer.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditor.Assets\Hjmos.Lcdp.VisualEditor.Assets.csproj">
+      <Project>{ae85c16f-2786-4948-820a-57ccb793169a}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.Assets</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditor.Core\Hjmos.Lcdp.VisualEditor.Core.csproj">
+      <Project>{7C932091-ED1F-42D3-AAB1-5249D8963339}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditor.IService\Hjmos.Lcdp.VisualEditor.IService.csproj">
+      <Project>{F6B148BE-0E1F-488C-9335-21EB4824D322}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.IService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditor.Models\Hjmos.Lcdp.VisualEditor.Models.csproj">
+      <Project>{DD6B19E1-092F-4C66-B0F9-BDE34E10C506}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hjmos.Lcdp.VisualEditor.Service\Hjmos.Lcdp.VisualEditor.Service.csproj">
+      <Project>{6B4F1C78-F541-4265-8EAC-365978497655}</Project>
+      <Name>Hjmos.Lcdp.VisualEditor.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

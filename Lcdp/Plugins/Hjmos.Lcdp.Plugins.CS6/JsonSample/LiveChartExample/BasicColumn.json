@@ -1,0 +1,13 @@
+{
+  "Series": [
+    {
+      "Title": "2015",
+      "Values": [ 10, 50, 39, 50 ]
+    },
+    {
+      "Title": "2016",
+      "Values": [ 11, 56, 42, 48 ]
+    }
+  ],
+  "Labels": [ "Maria", "Susan", "Charles", "Frida" ]
+}

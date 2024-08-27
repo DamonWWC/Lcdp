@@ -1,0 +1,16 @@
+{
+  "Series": [
+    {
+      "Values": [ 5, 8, 2, 4, 6, 2, 9, 3 ],
+      "DataLabels": true
+    },
+    {
+      "Values": [ 7, 4, 1, 7, 2, 7, 0, 3 ],
+      "DataLabels": true
+    },
+    {
+      "Values": [ 6, 2, 8, 2, 9, 2, 3, 3 ]
+    }
+  ],
+  "Labels": [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Ago" ]
+}

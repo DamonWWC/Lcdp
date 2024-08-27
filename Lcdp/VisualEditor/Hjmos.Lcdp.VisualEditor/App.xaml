@@ -1,0 +1,174 @@
+﻿<prism:PrismApplication x:Class="Hjmos.Lcdp.VisualEditor.App"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:core="clr-namespace:Hjmos.Lcdp.VisualEditor.Core;assembly=Hjmos.Lcdp.VisualEditor.Core"
+                        xmlns:ctl="clr-namespace:Hjmos.Lcdp.VisualEditor.Core.Controls;assembly=Hjmos.Lcdp.VisualEditor.Core"
+                        xmlns:dc="clr-namespace:Hjmos.Lcdp.VisualEditor.Core.DesignerControls;assembly=Hjmos.Lcdp.VisualEditor.Core"
+                        xmlns:hc="clr-namespace:HandyControl.Controls;assembly=HandyControl"
+                        xmlns:o="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                        xmlns:prism="http://prismlibrary.com/">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- HandyControl -->
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
+
+                <!-- 自定义样式 -->
+                <ResourceDictionary Source="pack://application:,,,/Hjmos.Lcdp.VisualEditor;component/Themes/Styles.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Hjmos.Lcdp.VisualEditor.Core;component/DesignerControls/NumericUpDown.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Hjmos.Lcdp.VisualEditor.Core;component/DesignerControls/CollapsiblePanel.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Hjmos.Lcdp.VisualEditor.Core;component/DesignerControls/ControlStyles.xaml" />
+
+                <ResourceDictionary>
+                    <!-- TODO: 覆盖HandyControl主颜色 -->
+                    <LinearGradientBrush x:Key="PrimaryBrush" o:Freeze="True" StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop o:Freeze="True" Offset="0" Color="#00BAC0" />
+                        <GradientStop o:Freeze="True" Offset="1" Color="#00BAC0" />
+                    </LinearGradientBrush>
+                </ResourceDictionary>
+                <!-- 插件样式 -->
+                <!-- TODO：加载插件的时候自动合并清单中指定的资源 -->
+                <!--
+                <ResourceDictionary Source="C:/Users/EM/Documents/EM/Project/Hjmos.Lcdp/Plugins/Hjmos.Lcdp.Plugins.NccControl/Styles/Carousel.xaml" />-->
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="WindowMain" BasedOn="{StaticResource WindowWin10}" TargetType="{x:Type hc:GlowWindow}">
+                <Setter Property="ActiveGlowColor" Value="#262e2f" />
+                <Setter Property="InactiveGlowColor" Value="{DynamicResource BorderColor}" />
+                <Setter Property="BorderThickness" Value="0" />
+                <!-- 最大/小化按钮背景色 -->
+                <Setter Property="OtherButtonBackground" Value="#05050A" />
+                <!-- 最大/小化按钮前景色 -->
+                <Setter Property="OtherButtonForeground" Value="#FFFFFF" />
+                <!-- 最大/小化按钮鼠标覆盖背景色 -->
+                <Setter Property="OtherButtonHoverBackground" Value="#00BAC0" />
+                <!-- 关闭按钮背景色 -->
+                <Setter Property="CloseButtonBackground" Value="#05050A" />
+                <!-- 关闭按钮前景色 -->
+                <Setter Property="CloseButtonForeground" Value="#FFFFFF" />
+                <!-- 关闭按钮鼠标覆盖背景色 -->
+                <Setter Property="CloseButtonHoverBackground" Value="#00BAC0" />
+                <!-- Chrome区域背景色 -->
+                <Setter Property="NonClientAreaBackground" Value="#05050A" />
+            </Style>
+
+
+            <Style TargetType="{x:Type core:DesignSurface}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type core:DesignSurface}">
+                            <ctl:ZoomControl x:Name="PART_Zoom" AlwaysShowZoomButtons="True" Background="#737373"
+                                             EnableHorizontalWheelSupport="True" HorizontalScrollBarVisibility="Visible" MinimumZoom="0.025"
+                                             VerticalScrollBarVisibility="Visible">
+                                <ContentControl x:Name="PART_DesignContent" />
+                            </ctl:ZoomControl>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="{x:Type ctl:ZoomScrollViewer}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ctl:ZoomScrollViewer}">
+                            <Grid Background="{TemplateBinding Panel.Background}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <dc:SelfCollapsingPanel Grid.Row="1" Grid.Column="0" CanCollapse="{Binding Path=ComputedZoomButtonCollapsed, Mode=OneWay, RelativeSource={RelativeSource Mode=TemplatedParent}}" CollapseOrientation="Horizontal">
+                                    <ctl:ZoomButtons x:Name="zoomButtons" Maximum="{TemplateBinding MaximumZoom}" Minimum="{TemplateBinding MinimumZoom}" Value="{Binding Path=CurrentZoom, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                                </dc:SelfCollapsingPanel>
+                                <Rectangle Grid.Row="1" Grid.Column="2" Fill="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+                                <ScrollContentPresenter Name="PART_Presenter" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                                                        Margin="{TemplateBinding Control.Padding}"
+                                                        CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}"
+                                                        Content="{TemplateBinding ContentControl.Content}"
+                                                        ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}">
+                                    <ScrollContentPresenter.LayoutTransform>
+                                        <ScaleTransform ScaleX="{Binding Path=CurrentZoom, RelativeSource={RelativeSource Mode=TemplatedParent}}" ScaleY="{Binding Path=CurrentZoom, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                                    </ScrollContentPresenter.LayoutTransform>
+                                </ScrollContentPresenter>
+                                <ScrollBar Name="PART_VerticalScrollBar" Grid.Row="0" Grid.Column="2"
+                                           Maximum="{TemplateBinding ScrollableHeight}"
+                                           Minimum="0"
+                                           ViewportSize="{TemplateBinding ViewportHeight}"
+                                           Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+                                           Value="{TemplateBinding VerticalOffset}" />
+                                <ScrollBar Name="PART_HorizontalScrollBar" Grid.Row="1" Grid.Column="1"
+                                           Maximum="{TemplateBinding ScrollableWidth}"
+                                           Minimum="0" Orientation="Horizontal"
+                                           ViewportSize="{TemplateBinding ViewportWidth}"
+                                           Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+                                           Value="{TemplateBinding HorizontalOffset}" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="ZoomButtonStyle" TargetType="RepeatButton">
+                <Setter Property="Delay" Value="0" />
+                <Setter Property="Focusable" Value="False" />
+                <Setter Property="Opacity" Value="0.5" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RepeatButton">
+                            <ContentPresenter />
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Opacity" Value="1" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="{x:Type ctl:ZoomButtons}">
+                <Setter Property="Minimum" Value="0.2" />
+                <Setter Property="Maximum" Value="10" />
+                <Setter Property="Value" Value="1" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ctl:ZoomButtons}">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                <StackPanel Background="#3000" Orientation="Horizontal">
+                                    <RepeatButton x:Name="uxPlus" Width="16" Height="16" Padding="0" BorderThickness="0"
+                                                  Style="{StaticResource ZoomButtonStyle}">
+                                        <Image Source="/Hjmos.Lcdp.VisualEditor.Assets;component/Images/ZoomIn.png" Stretch="Uniform" />
+                                    </RepeatButton>
+                                    <RepeatButton x:Name="uxMinus" Width="16" Height="16" Padding="0" BorderThickness="0"
+                                                  Style="{StaticResource ZoomButtonStyle}">
+                                        <Image Source="/Hjmos.Lcdp.VisualEditor.Assets;component/Images/ZoomOut.png" Stretch="Uniform" />
+                                    </RepeatButton>
+                                    <RepeatButton x:Name="uxReset" Width="16" Height="16" Padding="0" BorderThickness="0"
+                                                  Style="{StaticResource ZoomButtonStyle}">
+                                        <Border Background="#5000">
+                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White">1</TextBlock>
+                                        </Border>
+                                    </RepeatButton>
+                                    <RepeatButton x:Name="ux100Percent" Width="16" Height="16" Padding="0" BorderThickness="0"
+                                                  Style="{StaticResource ZoomButtonStyle}">
+                                        <Border Background="#5000">
+                                            <Viewbox Stretch="Uniform">
+                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White">100%</TextBlock>
+                                            </Viewbox>
+                                        </Border>
+                                    </RepeatButton>
+                                </StackPanel>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</prism:PrismApplication>

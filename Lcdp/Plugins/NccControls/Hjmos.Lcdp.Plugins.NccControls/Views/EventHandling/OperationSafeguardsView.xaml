@@ -1,0 +1,92 @@
+﻿<u:WidgetBase x:Class="Hjmos.Lcdp.Plugins.NccControls.Views.EventHandling.OperationSafeguardsView"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:prism="http://prismlibrary.com/"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+              xmlns:c="clr-namespace:CalcBinding;assembly=CalcBinding"
+              xmlns:u="clr-namespace:Hjmos.Lcdp.VisualEditor.Core.BaseClass;assembly=Hjmos.Lcdp.VisualEditor.Core"
+              xmlns:common="clr-namespace:Hjmos.Ncc.Resource.Common;assembly=Hjmos.Ncc.Resource"
+              prism:ViewModelLocator.AutoWireViewModel="True" Background="#FF072945" Opacity="0.95">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Hjmos.Ncc.Resource;component/Styles/FontIcon.xaml" />
+                <ResourceDictionary Source="/Hjmos.Ncc.Resource;component/Styles/TextBox.xaml" />
+                <ResourceDictionary>
+                    <Style BasedOn="{StaticResource VisualWaterTextBox2}" TargetType="{x:Type TextBox}">
+                        <Setter Property="Height" Value="76" />
+                        <Setter Property="VerticalContentAlignment" Value="Top" />
+                        <Setter Property="TextWrapping" Value="Wrap" />
+                        <Setter Property="common:Attacher.WaterMarkVerticalAlignment" Value="Top" />
+                        <Setter Property="common:Attacher.WaterMarkMargin" Value="12,5" />
+                        <Setter Property="IsEnabled" Value="{Binding IsCmbEditable}" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <!-- 运营保障措施 -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!-- 标题栏 -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="12,10,0,6" FontSize="14" FontWeight="SemiBold" Foreground="White" Text="运营保障措施" />
+            <!-- 编辑按钮 -->
+            <Border Grid.Column="1" Margin="12,0" HorizontalAlignment="Right" VerticalAlignment="Center"
+                    Background="Transparent" Cursor="Hand" ToolTip="编辑">
+                <TextBlock Margin="1" FontSize="12" Foreground="White"
+                           Style="{StaticResource FontIcon}"
+                           Text="&#xe77d;"
+                           Visibility="{c:Binding !IsCmbEditable, FalseToVisibility=Collapsed}" />
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding EditCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Border>
+            <StackPanel Grid.Column="1" Margin="10,0,12,0" HorizontalAlignment="Right" Orientation="Horizontal"
+                        Visibility="{c:Binding IsCmbEditable, FalseToVisibility=Collapsed}">
+                <!-- 保存按钮 -->
+                <Border Background="Transparent" Cursor="Hand" ToolTip="保存">
+                    <TextBlock Margin="1" FontSize="12" Foreground="White"
+                               Style="{StaticResource FontIcon}"
+                               Text="&#xe77e;" />
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                            <i:InvokeCommandAction Command="{Binding SaveCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Border>
+                <!-- 取消按钮 -->
+                <Border Grid.Column="1" Margin="10,0,0,0" Background="Transparent" Cursor="Hand" ToolTip="取消">
+                    <TextBlock Margin="1" FontSize="10" Foreground="White"
+                               Style="{StaticResource FontIcon}"
+                               Text="&#xe75e;" />
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                            <i:InvokeCommandAction Command="{Binding CancelCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Border>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" Margin="12,6,12,6" common:Attacher.Watermark="客流调整措施" MaxLength="60"
+                     Text="{Binding PassengerFlowMeasure.Content, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Grid.Row="1" Margin="12,6,12,10" common:Attacher.Watermark="车辆调配措施" MaxLength="60"
+                     Text="{Binding TrainMeasure.Content, UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+    </Grid>
+</u:WidgetBase>

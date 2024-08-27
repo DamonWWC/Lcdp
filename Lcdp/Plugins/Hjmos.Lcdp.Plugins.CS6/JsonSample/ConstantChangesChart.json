@@ -1,0 +1,142 @@
+{
+  "series": [
+    {
+      "title": "实时进站",
+      "color": "#1698FF",
+      "values": [
+        {
+          "dateTime": "10:00",
+          "value": 47.2
+        },
+        {
+          "dateTime": "10:10",
+          "value": 45.5
+        },
+        {
+          "dateTime": "10:20",
+          "value": 136.1
+        },
+        {
+          "dateTime": "10:30",
+          "value": 18.5
+        },
+        {
+          "dateTime": "10:40",
+          "value": 54.7
+        },
+        {
+          "dateTime": "10:50",
+          "value": 82.7
+        },
+        {
+          "dateTime": "11:00",
+          "value": 125.5
+        }
+      ]
+    },
+    {
+      "title": "实时出站",
+      "color": "#33FFA1",
+      "values": [
+        {
+          "dateTime": "10:00",
+          "value": 52.1
+        },
+        {
+          "dateTime": "10:10",
+          "value": 53.4
+        },
+        {
+          "dateTime": "10:20",
+          "value": 55.6
+        },
+        {
+          "dateTime": "10:30",
+          "value": 60.1
+        },
+        {
+          "dateTime": "10:40",
+          "value": 56.8
+        },
+        {
+          "dateTime": "10:50",
+          "value": 62.9
+        },
+        {
+          "dateTime": "11:00",
+          "value": 65.3
+        }
+      ]
+    },
+    {
+      "title": "预测进站",
+      "color": "#00DBEB",
+      "strokeDashArray": 2,
+      "values": [
+        {
+          "dateTime": "10:00",
+          "value": 152.1
+        },
+        {
+          "dateTime": "10:10",
+          "value": 153.4
+        },
+        {
+          "dateTime": "10:20",
+          "value": 155.6
+        },
+        {
+          "dateTime": "10:30",
+          "value": 160.1
+        },
+        {
+          "dateTime": "10:40",
+          "value": 156.8
+        },
+        {
+          "dateTime": "10:50",
+          "value": 162.9
+        },
+        {
+          "dateTime": "11:00",
+          "value": 165.3
+        }
+      ]
+    },
+    {
+      "title": "预测出站",
+      "color": "#8482E0",
+      "strokeDashArray": 2,
+      "values": [
+        {
+          "dateTime": "10:00",
+          "value": 147.2
+        },
+        {
+          "dateTime": "10:10",
+          "value": 145.5
+        },
+        {
+          "dateTime": "10:20",
+          "value": 346.1
+        },
+        {
+          "dateTime": "10:30",
+          "value": 204.5
+        },
+        {
+          "dateTime": "10:40",
+          "value": 1104.7
+        },
+        {
+          "dateTime": "10:50",
+          "value": 242.7
+        },
+        {
+          "dateTime": "11:00",
+          "value": 151.5
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+﻿<ContextMenu x:Class="Hjmos.Lcdp.VisualEditor.Controls.Extensions2.WrapItemContextMenu"
+             xmlns="http://schemas.microsoft.com/netfx/2007/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Translation="clr-namespace:Hjmos.Lcdp.VisualEditor.Controls"
+>
+    <MenuItem Header="{Binding WrapInViewbox, Source={x:Static Translation:Translations.Instance}}" Click="Click_WrapInViewbox">
+        <MenuItem.Icon>
+            <Image Source="/Hjmos.Lcdp.VisualEditor.Controls;component/Images/wrap-option.png" />
+        </MenuItem.Icon>
+    </MenuItem>
+</ContextMenu>

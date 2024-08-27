@@ -1,0 +1,109 @@
+﻿<u:WidgetBase x:Class="Hjmos.Lcdp.Plugins.NccControls.Views.EventHandling.EmergencyRescueView"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:c="clr-namespace:CalcBinding;assembly=CalcBinding"
+              xmlns:common="clr-namespace:Hjmos.Ncc.Resource.Common;assembly=Hjmos.Ncc.Resource"
+              xmlns:control="clr-namespace:Hjmos.Ncc.Resource.Controls;assembly=Hjmos.Ncc.Resource"
+              xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:prism="http://prismlibrary.com/"
+              xmlns:u="clr-namespace:Hjmos.Lcdp.VisualEditor.Core.BaseClass;assembly=Hjmos.Lcdp.VisualEditor.Core"
+              prism:ViewModelLocator.AutoWireViewModel="True" Background="#FF072945" Opacity="0.95">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Hjmos.Ncc.Resource;component/Styles/FontIcon.xaml" />
+                <ResourceDictionary Source="/Hjmos.Ncc.Resource;component/Styles/ComboBox.xaml" />
+
+                <ResourceDictionary>
+                    <Style BasedOn="{StaticResource ComboBoxWithTitleAndFullBorderStyle}" TargetType="{x:Type control:CustomComboBox}">
+                        <Setter Property="ComboBoxToggleButtonStyle" Value="{StaticResource ComboBoxToggleButton2}" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <!-- 应急救援 -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!-- 标题栏 -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="12,10,0,6" FontSize="14" FontWeight="SemiBold" Foreground="White" Text="应急救援" />
+            <!-- 编辑按钮 -->
+            <Border Grid.Column="1" Margin="12,0" HorizontalAlignment="Right" VerticalAlignment="Center"
+                    Background="Transparent" Cursor="Hand">
+                <TextBlock Margin="1" FontSize="12" Foreground="White"
+                           Style="{StaticResource FontIcon}"
+                           Text="&#xe77d;"
+                           Visibility="{c:Binding !IsCmbEditable, FalseToVisibility=Collapsed}" />
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding EditCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Border>
+            <StackPanel Grid.Column="1" Margin="10,0,12,0" HorizontalAlignment="Right" Orientation="Horizontal"
+                        Visibility="{c:Binding IsCmbEditable, FalseToVisibility=Collapsed}">
+                <!-- 保存按钮 -->
+                <Border Background="Transparent" Cursor="Hand" ToolTip="保存">
+                    <TextBlock Margin="1" FontSize="12" Foreground="White"
+                               Style="{StaticResource FontIcon}"
+                               Text="&#xe77e;" />
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                            <i:InvokeCommandAction Command="{Binding SaveCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Border>
+                <!-- 取消按钮 -->
+                <Border Grid.Column="1" Margin="10,0,0,0" Background="Transparent" Cursor="Hand" ToolTip="取消">
+                    <TextBlock Margin="1" FontSize="10" Foreground="White"
+                               Style="{StaticResource FontIcon}"
+                               Text="&#xe75e;" />
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                            <i:InvokeCommandAction Command="{Binding CancelCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Border>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="12,6,12,12" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <control:CustomComboBox Title="" Height="32" DisplayMemberPath="DisplayName"
+                                    IsEnabled="{Binding IsCmbEditable}"
+                                    ItemsSource="{Binding PoliceContactStateList}"
+                                    SelectedValue="{Binding SelectedPoliceContactState, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    WaterMarkText="请选择" />
+            <control:CustomComboBox Title="" Grid.Row="1" Height="32" Margin="0,8,0,0" DisplayMemberPath="DisplayName"
+                                    IsEnabled="{Binding IsCmbEditable}"
+                                    ItemsSource="{Binding FirstAidContactStateList}"
+                                    SelectedValue="{Binding SelectedFirstAidContactState, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    WaterMarkText="请选择" />
+            <control:CustomComboBox Title="" Grid.Row="2" Height="32" Margin="0,8,0,0" common:Attacher.PopUpPlacement="Top"
+                                    DisplayMemberPath="DisplayName"
+                                    IsEnabled="{Binding IsCmbEditable}"
+                                    ItemsSource="{Binding FirePoliceContactStateList}"
+                                    SelectedValue="{Binding SelectedFirePoliceContactState, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    WaterMarkText="请选择" />
+            <control:CustomComboBox Title="" Grid.Row="3" Height="32" Margin="0,8,0,0" common:Attacher.PopUpPlacement="Top"
+                                    DisplayMemberPath="DisplayName"
+                                    IsEnabled="{Binding IsCmbEditable}"
+                                    ItemsSource="{Binding ProfessionalRescueContactStateList}"
+                                    SelectedValue="{Binding SelectedProfessionalRescueContactState, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    WaterMarkText="请选择" />
+        </Grid>
+
+    </Grid>
+</u:WidgetBase>

@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="Hjmos.Lcdp.VisualEditor.MainModule.Views.WidgetParamterDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:Hjmos.Lcdp.VisualEditor.Core.Attached;assembly=Hjmos.Lcdp.VisualEditor.Core"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <prism:Dialog.WindowStyle>
+        <Style TargetType="Window">
+            <Setter Property="Width" Value="480"/>
+            <Setter Property="Height" Value="500"/>
+        </Style>
+    </prism:Dialog.WindowStyle>
+    <hc:TransitioningContentControl>
+        <Grid Margin="0,32,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <ComboBox ItemsSource="{Binding WidgetFieldList}" hc:InfoElement.Title="组件字段" Style="{StaticResource ComboBoxExtend}" SelectedItem="{Binding SelectedField}" Margin="5"/>
+                <ComboBox Grid.Column="1" ItemsSource="{Binding ParameterList}" SelectedItem="{Binding SelectedParamter}" DisplayMemberPath="Name" hc:InfoElement.Title="关联参数" Style="{StaticResource ComboBoxExtend}" Margin="5"/>
+                <Button Grid.Column="2" Content="添加" Style="{StaticResource ButtonPrimary}" Command="{Binding AddCommand}" VerticalAlignment="Bottom" Margin="5" />
+                <Grid Grid.Row="1" Grid.ColumnSpan="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border Background="#F7F9FA"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="序号" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Text="组件字段" VerticalAlignment="Center" Grid.Column="1"/>
+                        <TextBlock Text="关联参数" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2"/>
+                        <TextBlock Text="操作" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3"/>
+                    </Grid>
+                    <ItemsControl ItemsSource="{Binding SelectedElement.(c:ParameterMappingAttached.ParameterMapping)}" Grid.Row="1">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Height="35" Name="root" Background="Transparent">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding Index}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{Binding WidgetField}" VerticalAlignment="Center" Grid.Column="1"/>
+                                    <TextBlock Text="{Binding Parameter.Name}" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="2" />
+                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3">
+                                        <Hyperlink Command="{Binding DeleteCommand}" CommandParameter="{Binding}">删除</Hyperlink>
+                                    </TextBlock>
+                                </Grid>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#F7F9FA" TargetName="root"/>
+                                    </Trigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+            </Grid>
+        </Grid>
+    </hc:TransitioningContentControl>
+</UserControl>

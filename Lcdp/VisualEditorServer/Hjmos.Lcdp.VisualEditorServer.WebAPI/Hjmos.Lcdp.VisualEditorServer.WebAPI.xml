@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hjmos.Lcdp.VisualEditorServer.WebAPI</name>
+    </assembly>
+    <members>
+        <member name="T:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.DemoController">
+            <summary>
+            示例接口
+            </summary>
+        </member>
+        <member name="M:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.DemoController.BasicColumnData1">
+            <summary>
+            标签列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.DemoController.BasicColumnData2">
+            <summary>
+            标签列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.DemoController.AlarmWarnStatistics">
+            <summary>
+            预警统计
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.DemoController.EmergencyStatistics">
+            <summary>
+            预警统计
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.LoginController">
+            <summary>
+            登录
+            </summary>
+        </member>
+        <member name="T:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.ModuleController">
+            <summary>
+            模块
+            </summary>
+        </member>
+        <member name="M:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.ModuleController.Modules">
+            <summary>
+            获取页面项目列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.ModuleController.GetSubItems(System.Int32)">
+            <summary>
+            获取文件夹子项
+            </summary>
+            <param name="id">文件夹ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.ModuleController.Delete(System.Int32)">
+            <summary>
+            删除文件夹
+            </summary>
+            <param name="id">文件夹ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.ModuleController.AddDirectory(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            新增目录
+            </summary>
+            <param name="directory"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.PageController">
+            <summary>
+            页面
+            </summary>
+        </member>
+        <member name="M:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.PageController.Save(Hjmos.Lcdp.VisualEditorServer.Entities.File)">
+            <summary>
+            保存页面
+            </summary>
+            <param name="page"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.PageController.Load(System.String)">
+            <summary>
+            查找页面
+            </summary>
+            <param name="guid">页面GUID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.PageController.Delete(System.Int32)">
+            <summary>
+            删除页面
+            </summary>
+            <param name="id">文件ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.PageController.GetById(System.Int32)">
+            <summary>
+            根据文件ID查找页面
+            </summary>
+            <param name="id">文件ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.PageController.AddPage(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            新增页面
+            </summary>
+            <param name="page"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.ParameterController.GetAllParameters(System.Int32)">
+            <summary>
+            获取参数列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.WidgetController">
+            <summary>
+            组件
+            </summary>
+        </member>
+        <member name="M:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.WidgetController.GetLibs">
+            <summary>
+            获取组件库列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.WidgetController.GetWidgets(System.Int32)">
+            <summary>
+            获取组件列表
+            </summary>
+            <param name="id">组件库ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:Hjmos.Lcdp.VisualEditorServer.WebAPI.Controllers.WidgetController.Upload(Microsoft.AspNetCore.Http.IFormCollection)">
+            <summary>
+            上传组件
+            </summary>
+            <param name="formCollection"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Hjmos.Lcdp.VisualEditorServer.WebAPI.Enums.ApiVersions">
+            <summary>
+            OpenAPI版本管理枚举类
+            </summary>
+        </member>
+        <member name="T:Hjmos.Lcdp.VisualEditorServer.WebAPI.Extensions.EnumExtension">
+            <summary>
+            枚举静态扩展类
+            </summary>
+        </member>
+        <member name="M:Hjmos.Lcdp.VisualEditorServer.WebAPI.Extensions.EnumExtension.GetDescription(System.Enum)">
+            <summary>
+            获取枚举的描述
+            </summary>
+            <param name="value"></param>
+            <returns>返回Enum上特性Description的值，没有则返回Enum的名称</returns>
+        </member>
+        <member name="M:Hjmos.Lcdp.VisualEditorServer.WebAPI.Extensions.EnumExtension.FillWithMembers``1(System.Collections.Generic.ICollection{``0})">
+            <summary>
+            将指定枚举类型的每个项，填充到ICollection
+            </summary>
+            <typeparam name="T">枚举</typeparam>
+            <param name="collection">被填充的ICollection</param>
+        </member>
+    </members>
+</doc>
